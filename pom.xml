@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+     <name>WhoWhen</name>
+    <groupId>iopiotrsukiennik.whowhen</groupId>
+    <artifactId>whowhen</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <properties>
+        <spring-version>3.1.0.RELEASE</spring-version>
+        <hibernate.version>3.5.6-Final</hibernate.version>
+        <aspectjrt.version>1.6.12</aspectjrt.version>
+        <java-version.source>1.6</java-version.source>
+        <cglib.version>2.2.2</cglib.version>
+        <slf4j-version>1.6.6</slf4j-version>
+    </properties>
+    <modules>
+        <module>frontend</module>
+        <module>backend</module>
+        <module>shared</module>
+        <module>datasubmit</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Releases</name>
+            <url>http://localhost/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Project snapshots</name>
+            <url>http://localhost/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java-version.source}</source>
+                        <target>${java-version.source}</target>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+        <finalName>whowhen</finalName>
+    </build>
+
+</project>

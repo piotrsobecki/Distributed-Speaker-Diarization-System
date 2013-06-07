@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="spring-security-3.0.5" type="spring-security">
+    <properties version="3.0.5" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-acl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-aspects.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-cas-client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-config.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-ldap.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-openid.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-taglibs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-security-web.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

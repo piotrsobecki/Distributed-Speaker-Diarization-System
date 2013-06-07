@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/backend/fileaware" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/fileaware/converter" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/fileaware/processer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/fileaware/processer/src/main/java/iopiotrsukiennik/whowhen/processer/transformer/DeltaTransformer.java" charset="windows-1250" />
+    <file url="file://$PROJECT_DIR$/backend/fileaware/splitter" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/backend/service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/datasubmit/src/main/java/iopiotrsukiennik" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/datasubmit/webapp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shared/src/main/java/iopiotrsukiennik/whowhen/shared/form/WhoWhenRequestForm.java" charset="UTF-8" />
+  </component>
+</project>
+

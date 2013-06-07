@@ -1,0 +1,8 @@
+<html>
+<body>
+<h4>Your request has been processed.</h4>
+<div>
+    Results available at <a href="http://whowhen.com/${requestIdentifier}/request">WhoWhen</a>.
+</div>
+</body>
+</html>

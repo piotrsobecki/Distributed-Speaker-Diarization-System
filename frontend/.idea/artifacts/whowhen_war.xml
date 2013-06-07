@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="whowhen:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="whowhen.war">
+      <element id="artifact" artifact-name="whowhen:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="hibernate-4.1.1" />
+          <element id="library" level="project" name="comirva-0.36" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

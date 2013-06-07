@@ -1,0 +1,46 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="fileaware:war exploded">
+    <output-path>$PROJECT_DIR$/backend/fileaware/target/fileaware</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="fileaware/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="fileaware" />
+          <element id="module-output" name="converter" />
+          <element id="module-output" name="splitter" />
+          <element id="module-output" name="api" />
+          <element id="module-output" name="shared" />
+          <element id="module-output" name="jave" />
+          <element id="module-output" name="processer" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-asm:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.3" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.3" />
+        </element>
+      </element>
+      <element id="directory" name="converter">
+        <element id="artifact" artifact-name="converter:war exploded" />
+      </element>
+      <element id="directory" name="splitter">
+        <element id="artifact" artifact-name="splitter:war exploded" />
+      </element>
+      <element id="directory" name="processer">
+        <element id="artifact" artifact-name="processer:war exploded" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.1.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <util:properties id="classifierProperties" location="/WEB-INF/properties/classifier-services.properties" />
+    <bean id="classifierService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
+        <property name="serviceUrl" value="#{classifierProperties['classifier.url']}/classifier.service"/>
+    </bean>
+
+    <util:list id="classifiers">
+        <ref bean="classifierService"/>
+    </util:list>
+</beans>

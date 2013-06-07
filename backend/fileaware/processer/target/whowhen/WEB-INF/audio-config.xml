@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="		http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="mffcc" class="iopiotrsukiennik.whowhen.processer.mfcc.MFCCBuilder">
+        <constructor-arg index="0" value="16000"/><!--sampleRate-->
+        <constructor-arg index="1" value="512"/>
+        <constructor-arg index="2" value="12"/>
+        <constructor-arg index="3" value="false"/>
+        <constructor-arg index="4" value="300"/>
+        <constructor-arg index="5" value="3400"/>
+        <constructor-arg index="6" value="24"/>
+    </bean>
+
+    <bean id="audioFormat" class="javax.sound.sampled.AudioFormat">
+        <constructor-arg index="0" value="16000"/><!--sampleRate-->
+        <constructor-arg index="1" value="16"/>
+        <constructor-arg index="2" value="1"/>
+        <constructor-arg index="3" value="true"/>
+        <constructor-arg index="4" value="false"/>
+    </bean>
+
+    <bean id="mfccAudioFileProcessor" class="iopiotrsukiennik.whowhen.processer.mfcc.MFCCAudioFileProcessor">
+        <constructor-arg index="0" ref="mffcc"/>
+        <constructor-arg index="1">
+            <bean class="iopiotrsukiennik.whowhen.processer.AudioPreProcessorBuilder">
+                <constructor-arg index="0" ref="audioFormat"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+
+</beans>

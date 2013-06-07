@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend/api/api.iml" filepath="$PROJECT_DIR$/backend/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/balancer/balancer.iml" filepath="$PROJECT_DIR$/backend/balancer/balancer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/classifier/classifier.iml" filepath="$PROJECT_DIR$/backend/classifier/classifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/fileaware/converter/converter.iml" filepath="$PROJECT_DIR$/backend/fileaware/converter/converter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/datasubmit/datasubmit.iml" filepath="$PROJECT_DIR$/datasubmit/datasubmit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/frontend.iml" filepath="$PROJECT_DIR$/frontend/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/jave/jave.iml" filepath="$PROJECT_DIR$/backend/jave/jave.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/fileaware/processer/processer.iml" filepath="$PROJECT_DIR$/backend/fileaware/processer/processer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/service/service.iml" filepath="$PROJECT_DIR$/backend/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shared/shared.iml" filepath="$PROJECT_DIR$/shared/shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/fileaware/splitter/splitter.iml" filepath="$PROJECT_DIR$/backend/fileaware/splitter/splitter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/whowhen.iml" filepath="$PROJECT_DIR$/whowhen.iml" />
+    </modules>
+  </component>
+</project>
+

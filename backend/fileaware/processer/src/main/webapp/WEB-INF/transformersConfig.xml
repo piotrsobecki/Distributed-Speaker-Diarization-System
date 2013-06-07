@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+    <bean id="transformers" class="iopiotrsukiennik.whowhen.processer.transformer.TransformerChain">
+        <constructor-arg index="0">
+            <util:list list-class="java.util.ArrayList">
+                <!--<bean class="iopiotrsukiennik.whowhen.processer.transformer.CepstralMeanNormalizationTransformer">
+                    <property name="meanMethod" value="ARITHMETIC"/>
+                </bean>-->
+         <!--       <bean class="iopiotrsukiennik.whowhen.processer.transformer.MeanTransformer">
+                    <property name="meanMethod" value="ARITHMETIC"/>
+                </bean>
+-->
+                <bean class="iopiotrsukiennik.whowhen.processer.transformer.LastNMeanTransformer">
+                    <property name="howManyForMean" value="5"/>
+                    <property name="doRepeatData" value="false"/>
+                    <property name="columnsFrom" value="0"/>
+                    <property name="columnsTo" value="11"/>
+                    <property name="meanMethod" value="ARITHMETIC"/>
+                </bean>
+                <bean class="iopiotrsukiennik.whowhen.processer.transformer.DeltaTransformer">
+                    <property name="range" value="2"/>
+                    <property name="columnsFrom" value="0"/>
+                    <property name="columnsTo" value="11"/>
+                </bean>
+            </util:list>
+        </constructor-arg>
+    </bean>
+</beans>

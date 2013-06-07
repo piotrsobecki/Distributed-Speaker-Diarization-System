@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="kMeans" class="weka.clusterers.SimpleKMeans"></bean>
+
+    <bean id="kMeansLabelingClassifier" class="iopiotrsukiennik.whowhen.classification.impl.weka.WekaLabelingClusterer">
+        <constructor-arg index="0" ref="kMeans"/>
+        <property name="requiredLabel" value="NOT_SILENCE"/>
+    </bean>
+
+    <bean id="silenceClassifier" class="iopiotrsukiennik.whowhen.classification.impl.quality.FeaturesAbsoluteSumClassifier">
+        <property name="requiredQuality" value="30"/>
+        <property name="featuresFrom" value="0"/>
+        <property name="featuresTo" value="11"/>
+        <property name="label" value="SILENCE"/>
+    </bean>
+
+
+    <bean id="classifierDataDirectory" class="java.io.File">
+        <constructor-arg index="0" value="D:\WHOWHEN\CLASSIFIER\"/>
+    </bean>
+  <!--
+  <bean id="xMeans" class="weka.clusterers.XMeans">
+       <property name="options">
+            <list>
+                <value>-V</value>
+                <value>-H</value>
+                <value>15</value>
+                <value>-L</value>
+                <value>1</value>
+            </list>
+        </property>
+    </bean>
+
+
+
+    <bean id="densityBasedClusterer" class="weka.clusterers.MakeDensityBasedClusterer">
+        <property name="options">
+            <list>
+                <value>-W</value>
+                <value>weka.clusterers.XMeans</value>
+                <value>-x</value>
+                <value>10</value>
+                <value>-H</value>
+                <value>15</value>
+                <value>-L</value>
+                <value>1</value>
+                <value>-I</value>
+                <value>150</value>
+                <value>-C</value>
+                <value>5.0</value>
+                <value>-V</value>
+                <value>-D</value>
+                <value>weka.core.EuclideanDistance -D</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="emLabelingClassifier" class="iopiotrsukiennik.whowhen.classification.impl.weka.FilteringWekaLabelingClusterer">
+        <constructor-arg index="0" ref="EMClusterer"/>
+        <constructor-arg index="1" value="weka.filters.unsupervised.instance.RemovePercentage"/>
+        <property name="requiredLabel" value="NOT_SILENCE"/>
+    </bean>
+-->
+
+
+
+</beans>
