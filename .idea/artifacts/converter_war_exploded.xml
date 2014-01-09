@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="converter:war exploded">
-    <output-path>$PROJECT_DIR$/backend/fileaware/converter/target/whowhen</output-path>
+    <output-path>$PROJECT_DIR$/backend/fileaware/converter/target/converter-1.0</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="converter/web/Web" />
       <element id="directory" name="WEB-INF">

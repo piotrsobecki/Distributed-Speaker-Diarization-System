@@ -34,6 +34,9 @@
     <file type="web" url="file://$PROJECT_DIR$/frontend" />
   </component>
   <component name="IdProvider" IDEtalkID="B01996CF81E4CA7D36F659920253BC2E" />
+  <component name="IvyProjectSettings">
+    <dependencies />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

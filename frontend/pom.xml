@@ -2,25 +2,24 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>iopiotrsukiennik.whowhen</groupId>
 	<artifactId>frontend</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
     <name>WhoWhen Frontend</name>
     <parent>
-        <groupId>iopiotrsukiennik.whowhen</groupId>
+        <groupId>pl.piotrsukiennik.whowhen</groupId>
         <artifactId>whowhen</artifactId>
         <version>1.0</version>
     </parent>
 	<url>http://maven.apache.org</url>
 	<dependencies>
         <dependency>
-            <groupId>iopiotrsukiennik.whowhen.backend</groupId>
+            <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
             <artifactId>api</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>iopiotrsukiennik.whowhen</groupId>
+            <groupId>pl.piotrsukiennik.whowhen</groupId>
             <version>1.0</version>
             <artifactId>shared</artifactId>
         </dependency>

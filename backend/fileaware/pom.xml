@@ -4,20 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>whowhen</artifactId>
-        <groupId>pl.piotrsukiennik.whowhen</groupId>
+        <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
-    <artifactId>backend</artifactId>
+    <groupId>pl.piotrsukiennik.whowhen.backend.fileaware</groupId>
+    <artifactId>fileaware</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
      <modules>
-         <module>api</module>
-         <module>service</module>
-         <module>balancer</module>
-         <module>classifier</module>
-         <module>jave</module>
+         <module>converter</module>
+         <module>splitter</module>
+         <module>processer</module>
      </modules>
 
     <dependencies>

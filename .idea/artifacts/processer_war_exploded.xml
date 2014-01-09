@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="processer:war exploded">
-    <output-path>$PROJECT_DIR$/backend/fileaware/processer/target/whowhen</output-path>
+    <output-path>$PROJECT_DIR$/backend/fileaware/processer/target/processer-1.0</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="processer/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -8,7 +8,6 @@
           <element id="module-output" name="processer" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: comirva:comirva:0.36" />
           <element id="archive" name="whowhen.jar">
             <element id="module-output" name="api" />
             <element id="module-output" name="shared" />

@@ -4,12 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>whowhen</artifactId>
-        <groupId>iopiotrsukiennik.whowhen</groupId>
+        <groupId>pl.piotrsukiennik.whowhen</groupId>
         <version>1.0</version>
     </parent>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>iopiotrsukiennik.whowhen</groupId>
     <version>1.0</version>
     <artifactId>shared</artifactId>
 

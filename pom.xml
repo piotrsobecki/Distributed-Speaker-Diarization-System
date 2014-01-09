@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
      <name>WhoWhen</name>
-    <groupId>iopiotrsukiennik.whowhen</groupId>
+    <groupId>pl.piotrsukiennik.whowhen</groupId>
     <artifactId>whowhen</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -36,20 +36,6 @@
         </dependency>
 
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Releases</name>
-            <url>http://localhost/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Project snapshots</name>
-            <url>http://localhost/nexus/content/repositories/snapshots</url>
-            <uniqueVersion>true</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
-
     <build>
         <pluginManagement>
             <plugins>

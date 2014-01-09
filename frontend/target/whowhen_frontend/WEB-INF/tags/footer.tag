@@ -1,1 +1,0 @@
-<span id="footer">whowhen by <a href="#">Piotr Sukiennik</a></span>

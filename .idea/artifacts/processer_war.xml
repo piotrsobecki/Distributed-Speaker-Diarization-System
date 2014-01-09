@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="processer:war">
     <output-path>$PROJECT_DIR$/backend/fileaware/processer/target</output-path>
-    <root id="archive" name="whowhen.war">
+    <root id="archive" name="processer-1.0.war">
       <element id="artifact" artifact-name="processer:war exploded" />
     </root>
   </artifact>

@@ -5,17 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>backend</artifactId>
-        <groupId>iopiotrsukiennik.whowhen.backend</groupId>
+        <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
         <version>1.0</version>
     </parent>
-
-    <groupId>iopiotrsukiennik.whowhen.backend</groupId>
     <artifactId>classifier</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <dependencies>
         <dependency>
-            <groupId>iopiotrsukiennik.whowhen.backend</groupId>
+            <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
             <artifactId>api</artifactId>
             <version>1.0</version>
         </dependency>
