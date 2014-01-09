@@ -73,7 +73,11 @@ class FFMPEGExecutor {
 	 *            The path of the ffmpeg executable.
 	 */
 	public FFMPEGExecutor(String ffmpegExecutablePath) {
-		this.ffmpegExecutablePath = ffmpegExecutablePath;
+        if (ffmpegExecutablePath.contains(" ")){
+            this.ffmpegExecutablePath = "\""+ffmpegExecutablePath+"\"";
+        }    else {
+            this.ffmpegExecutablePath = ffmpegExecutablePath;
+        }
 	}
 
 	/**

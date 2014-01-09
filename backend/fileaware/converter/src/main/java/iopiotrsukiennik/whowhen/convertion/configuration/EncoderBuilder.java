@@ -3,6 +3,7 @@ package iopiotrsukiennik.whowhen.convertion.configuration;
 import it.sauronsoftware.jave.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,11 +20,11 @@ import java.io.InputStreamReader;
  * To change this template use File | Settings | File Templates.
  */
 
-@Component
+@Configuration
 public class EncoderBuilder {
 
-    @Value("#{converterProperties['Converter.FFMPEGPath']}")
-    private String FFMPEGPath;
+    //@Value("#{systemProperties['FFMPEG_HOME']}")
+    private String FFMPEG_HOME="/ffmpeg";
     @Value("#{converterProperties['Converter.codec']}")
     private String codec;
     private Integer samplingRate;
@@ -41,7 +42,7 @@ public class EncoderBuilder {
     @PostConstruct
     public void init() {
         try{
-            acceptableFormats = new Encoder().getSupportedDecodingFormats();
+            acceptableFormats = encoder().getSupportedDecodingFormats();
         }   catch (EncoderException ee){
             throw new RuntimeException(ee);
         }
@@ -89,8 +90,7 @@ public class EncoderBuilder {
 
     @Bean
     public Encoder encoder(){
-        //return new Encoder(ffmpegLocator);
-        return new Encoder(new DefaultFFMPEGLocator());
+        return new Encoder(ffmpegLocator());
     }
 
 
@@ -99,9 +99,13 @@ public class EncoderBuilder {
         return new FFMPEGLocator() {
             private String ffmpegPath = null;
             {
-                File ffmpeg = new File(FFMPEGPath+"\\bin\\ffmpeg.exe");
-                System.out.println("FFMPegLocator constructed. FFMPEG.exe exists? "+ffmpeg.exists());
+                System.out.println(new File("test").getAbsolutePath());
+                String os = System.getProperty("os.name").toLowerCase();
+                boolean isWindows = os.contains("windows");
+                String path  = FFMPEG_HOME+"/ffmpeg"+ (isWindows?".exe":"");
+                File ffmpeg = new File(path);
                 ffmpegPath=ffmpeg.getAbsolutePath();
+
                 try{
                     Process p = Runtime.getRuntime().exec(ffmpeg.getAbsolutePath()+" -version");
                     String in=null;

@@ -34,7 +34,6 @@ public class DataSubmitController  {
     @RequestMapping(value="/",method = RequestMethod.POST)
     public String indexPOST(@ModelAttribute(value="FORM") WhoWhenRequestForm form,BindingResult result)
     {
-        System.out.println("submitData got "+form);
         RequestValidator requestValidator = new RequestValidator();
         requestValidator.validate(form,result);
 
@@ -54,21 +53,16 @@ public class DataSubmitController  {
                     outputStream.write(fileBytes);
                     outputStream.close();
                 }
-
                 BackendRequest backendRequest = new BackendRequest(requestIdentifier,form.getRequestData(),targetFile);
                 BackendResponse backendResponse = backendService.handle(backendRequest);
-
-                /*System.out.println("redirect:http://whowhen.com/"+backendRequest.getRequestIdentifier()+"/request");*/
-                return "redirect:http://whowhen.com/"+backendRequest.getRequestIdentifier()+"/request";
+                return "redirect:/"+backendRequest.getRequestIdentifier()+"/request";
 
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
         }
-       /* System.out.println(result.getAllErrors());
-        System.out.println("redirect:/");*/
-        return "redirect:http://whowhen.com/?error=true";
+        return "redirect:/?error=true";
     }
 
     protected String generateRequestIdentifier(){

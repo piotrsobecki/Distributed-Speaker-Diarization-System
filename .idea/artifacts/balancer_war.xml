@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="balancer:war">
-    <output-path>$PROJECT_DIR$/backend/balancer/target</output-path>
-    <root id="archive" name="whowhen.war">
-      <element id="artifact" artifact-name="balancer:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -9,6 +9,7 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <properties>
+        <war.output.dir>target</war.output.dir>
         <spring-version>3.1.0.RELEASE</spring-version>
         <hibernate.version>3.5.6-Final</hibernate.version>
         <aspectjrt.version>1.6.12</aspectjrt.version>
@@ -28,13 +29,11 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.3</version>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.10</version>
         </dependency>
-
     </dependencies>
     <build>
         <pluginManagement>
@@ -47,10 +46,15 @@
                         <target>${java-version.source}</target>
                     </configuration>
                 </plugin>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <outputDirectory>${war.output.dir}</outputDirectory>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>whowhen</finalName>
+        <finalName>${project.artifactId}</finalName>
     </build>
-
 </project>

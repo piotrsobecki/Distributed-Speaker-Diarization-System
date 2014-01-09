@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="classifier:war">
-    <output-path>$PROJECT_DIR$/backend/classifier/target</output-path>
-    <root id="archive" name="whowhen.war">
-      <element id="artifact" artifact-name="classifier:war exploded" />
-    </root>
-  </artifact>
-</component>

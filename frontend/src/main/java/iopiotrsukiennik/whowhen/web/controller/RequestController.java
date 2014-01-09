@@ -14,9 +14,6 @@ import java.util.Map;
 @Controller()
 public class RequestController {
 
-    @Value("#{serviceProperties['frontend.apacheDeploymentPath']}")
-    private String apacheDeploymentPath;
-
     @Resource(name = "backendService")
     private IBackendService backendService;
 

@@ -18,8 +18,8 @@
          <module>balancer</module>
          <module>classifier</module>
          <module>jave</module>
+         <module>fileaware</module>
      </modules>
-
     <dependencies>
         <dependency>
             <groupId>commons-lang</groupId>

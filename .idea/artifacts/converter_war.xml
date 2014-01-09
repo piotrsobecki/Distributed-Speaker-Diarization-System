@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="converter:war">
-    <output-path>$PROJECT_DIR$/backend/fileaware/converter/target</output-path>
-    <root id="archive" name="converter-1.0.war">
-      <element id="artifact" artifact-name="converter:war exploded" />
-    </root>
-  </artifact>
-</component>

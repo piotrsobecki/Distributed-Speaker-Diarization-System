@@ -18,7 +18,12 @@
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/${project.b}" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.parent.basedir}/target" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.parent.parent.basedir}/target" />
+      <excludeFolder url="file://$MODULE_DIR$/org.apache.maven.model.Model@5fbf144a/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
+      <excludeFolder url="file://$MODULE_DIR$/yourDirectory" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
