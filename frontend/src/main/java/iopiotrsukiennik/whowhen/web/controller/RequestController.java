@@ -1,13 +1,14 @@
 package iopiotrsukiennik.whowhen.web.controller;
 
 import iopiotrsukiennik.whowhen.backend.api.outer.*;
+import iopiotrsukiennik.whowhen.shared.util.HttpUtil;
 import iopiotrsukiennik.whowhen.shared.util.progress.Progress;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -41,4 +42,10 @@ public class RequestController {
         GetTimelineResponse getProgressResponse = backendService.handle(getProgressRequest);
         return getProgressResponse.getLevelledLabelledIntervals();
     }
+
+    @ModelAttribute("applicationPath")
+    public String getApplicationPath(HttpServletRequest request){
+        return HttpUtil.getApplicationContextPath(request);
+    }
+
 }

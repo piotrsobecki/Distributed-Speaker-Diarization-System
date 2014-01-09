@@ -19,9 +19,9 @@
 
         var statusMap = <spring:message code="request.status.status.map"/>;
         var statusMapDone = <spring:message code="request.status.status.map_done"/>;
-        var getProgressURL = "<c:url value="http://whowhen.com/${requestIdentifier}/progress"/>";
-        var getTimelineURL = "<c:url value="http://whowhen.com/${requestIdentifier}/timeline"/>";
-        var convertedAudioURL = "<c:url value="http://audio.whowhen.com/${requestIdentifier}"/>";
+        var getProgressURL = "<c:url value="http://${applicationPath}/${requestIdentifier}/progress"/>";
+        var getTimelineURL = "<c:url value="http://${applicationPath}/${requestIdentifier}/timeline"/>";
+        var convertedAudioURL = "<c:url value="http://static.${applicationPath}/${requestIdentifier}"/>";
         var progress=0;
         var progressBarActive=false;
         var status;
@@ -47,7 +47,7 @@
                     handleData(data);
                 },
                 error: function(data){
-                    window.location.href="";
+                    console.log(data);
                 }
             });
         }
