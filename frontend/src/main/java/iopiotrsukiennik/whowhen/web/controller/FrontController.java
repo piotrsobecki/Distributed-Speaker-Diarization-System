@@ -32,9 +32,14 @@ public class FrontController {
         return "index";
     }
 
+    @ModelAttribute("domainPath")
+    public String getDomainPath(HttpServletRequest request){
+        return HttpUtil.getDomainPath(request);
+    }
+
     @ModelAttribute("servletPath")
     public String getApplicationPath(HttpServletRequest request){
-        return "http://"+HttpUtil.getServletPath(request);
+        return HttpUtil.getServletPath(request);
     }
 
 

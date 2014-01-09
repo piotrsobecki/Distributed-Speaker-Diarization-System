@@ -115,7 +115,7 @@
         </script>
         <div id="start" class="button"  onclick="levelAction(0,true);"><spring:message code="front.step0.start"/></div>
 
-        <form:form commandName="FORM" id="whoWhenRequestForm" enctype="multipart/form-data" action="/datasubmit/?redirect=${servletPath}" method="POST">
+        <form:form commandName="FORM" id="whoWhenRequestForm" enctype="multipart/form-data" action="http://data.${domainPath}/?redirect=http://${servletPath}" method="POST">
             <div id="step_wrapper1" class="step_wrapper" style="display: none;" >
                 <div class="step_separator"></div>
                 <div class="step_content">
