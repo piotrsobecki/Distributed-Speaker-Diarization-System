@@ -7,12 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/${project.b}" />
-      <excludeFolder url="file://$MODULE_DIR$/${project.parent.basedir}/target" />
-      <excludeFolder url="file://$MODULE_DIR$/${project.parent.parent.basedir}/target" />
-      <excludeFolder url="file://$MODULE_DIR$/org.apache.maven.model.Model@5234cc2c/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/targets" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

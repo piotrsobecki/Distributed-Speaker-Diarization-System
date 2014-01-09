@@ -18,11 +18,10 @@
  */
 package it.sauronsoftware.jave;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * The default ffmpeg executable locator, which exports on disk the ffmpeg
@@ -51,16 +50,10 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 	 */
 	public DefaultFFMPEGLocator() {
 		// Windows?
-		boolean isWindows;
 		String os = System.getProperty("os.name").toLowerCase();
-		if (os.indexOf("windows") != -1) {
-			isWindows = true;
-		} else {
-			isWindows = false;
-		}
+        boolean isWindows = os.contains("windows");
 		// Temp dir?
-		File temp = new File(System.getProperty("java.io.tmpdir"), "jave-"
-				+ myEXEversion);
+		File temp = new File(System.getProperty("java.io.tmpdir"), "jave-"+ myEXEversion);
 		if (!temp.exists()) {
 			temp.mkdirs();
 			temp.deleteOnExit();
@@ -68,18 +61,11 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 		// ffmpeg executable export on disk.
 		String suffix = isWindows ? ".exe" : "";
 		File exe = new File(temp, "ffmpeg" + suffix);
-		if (!exe.exists()) {
-			copyFile("ffmpeg" + suffix, exe);
-		}
-		// pthreadGC2.dll
+	    copyFile("ffmpeg" + suffix, exe);
 		if (isWindows) {
 			File dll = new File(temp, "pthreadGC2.dll");
-			if (!dll.exists()) {
-				copyFile("pthreadGC2.dll", dll);
-			}
-		}
-		// Need a chmod?
-		if (!isWindows) {
+			copyFile("pthreadGC2.dll", dll);
+		} else {
 			Runtime runtime = Runtime.getRuntime();
 			try {
 				runtime.exec(new String[] { "/bin/chmod", "755",
@@ -107,34 +93,10 @@ public class DefaultFFMPEGLocator extends FFMPEGLocator {
 	 *             If aun unexpected error occurs.
 	 */
 	private void copyFile(String path, File dest) throws RuntimeException {
-		InputStream input = null;
-		OutputStream output = null;
 		try {
-			input = getClass().getResourceAsStream(path);
-			output = new FileOutputStream(dest);
-			byte[] buffer = new byte[1024];
-			int l;
-			while ((l = input.read(buffer)) != -1) {
-				output.write(buffer, 0, l);
-			}
+            FileUtils.copyInputStreamToFile(Thread.currentThread().getContextClassLoader().getResourceAsStream(path),dest);
 		} catch (IOException e) {
-			throw new RuntimeException("Cannot write file "
-					+ dest.getAbsolutePath());
-		} finally {
-			if (output != null) {
-				try {
-					output.close();
-				} catch (Throwable t) {
-					;
-				}
-			}
-			if (input != null) {
-				try {
-					input.close();
-				} catch (Throwable t) {
-					;
-				}
-			}
+			throw new RuntimeException("Cannot write file " + dest.getAbsolutePath());
 		}
 	}
 

@@ -12,20 +12,17 @@
 		http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-    <import resource="classpath:memcached-context.xml"/>
-    <import resource="mail-context.xml"/>
-
     <aop:aspectj-autoproxy />
-
     <bean id="memcachedWrapper" class="iopiotrsukiennik.whowhen.shared.memcached.MemcachedClientWrapper">
         <constructor-arg index="0" ref="memcachedClient"/>
     </bean>
-
     <context:component-scan base-package="iopiotrsukiennik" />
     <mvc:annotation-driven/>
     <util:properties id="concurrencyProperties" location="/WEB-INF/properties/concurrency.properties" />
     <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties" />
 
+
+    <bean id="progressNotifier" class="iopiotrsukiennik.whowhen.shared.event.ProgressNotifierImpl"/>
 
     <bean id="balancerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
@@ -33,12 +30,6 @@
     </bean>
 
 
-    <!--<bean class="org.springframework.remoting.rmi.RmiServiceExporter">
-        <property name="serviceName" value="BackendService"/>
-        <property name="service" ref="backendServiceImpl"/>
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
-        <property name="registryPort" value="1199"/>
-    </bean>-->
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
         <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>

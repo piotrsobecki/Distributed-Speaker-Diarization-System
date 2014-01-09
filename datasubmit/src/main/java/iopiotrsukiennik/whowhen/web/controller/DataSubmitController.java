@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -32,7 +33,11 @@ public class DataSubmitController  {
     private IBackendService backendService;
 
     @RequestMapping(value="/",method = RequestMethod.POST)
-    public String indexPOST(@ModelAttribute(value="FORM") WhoWhenRequestForm form,BindingResult result)
+    public String indexPOST(
+            @ModelAttribute(value="FORM") WhoWhenRequestForm form,
+            @RequestParam(value = "redirect",required = true) String redirect,
+
+            BindingResult result)
     {
         RequestValidator requestValidator = new RequestValidator();
         requestValidator.validate(form,result);
@@ -55,7 +60,7 @@ public class DataSubmitController  {
                 }
                 BackendRequest backendRequest = new BackendRequest(requestIdentifier,form.getRequestData(),targetFile);
                 BackendResponse backendResponse = backendService.handle(backendRequest);
-                return "redirect:/"+backendRequest.getRequestIdentifier()+"/request";
+                return "redirect:"+redirect+backendRequest.getRequestIdentifier()+"/request";
 
             } catch (Exception e) {
                 e.printStackTrace();

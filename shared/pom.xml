@@ -11,7 +11,6 @@
     <modelVersion>4.0.0</modelVersion>
     <version>1.0</version>
     <artifactId>shared</artifactId>
-
     <repositories>
         <repository>
             <id>spy</id>
@@ -25,6 +24,12 @@
 
     </repositories>
     <dependencies>
+        <dependency>
+            <groupId>servletapi</groupId>
+            <artifactId>servletapi</artifactId>
+            <version>2.4</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

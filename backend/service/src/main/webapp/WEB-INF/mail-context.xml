@@ -29,10 +29,10 @@
         </property>
     </bean>
 
-    <bean id="requestCompletionManager" class="iopiotrsukiennik.whowhen.backend.service.RequestProgressMailNotifier">
+  <!--  <bean id="requestCompletionManager" class="iopiotrsukiennik.whowhen.backend.service.event.MailSenderProgressListener">
         <property name="mailSender" ref="mailSender"/>
         <property name="velocityEngine" ref="velocityEngine"/>
         <property name="from" value="whowhen.piotrsukiennik@gmail.com"/>
         <property name="subject" value="Your request has been completed"/>
-    </bean>
+    </bean>-->
 </beans>

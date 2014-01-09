@@ -2,17 +2,19 @@ package iopiotrsukiennik.whowhen.web.controller;
 
 import iopiotrsukiennik.whowhen.backend.api.outer.IBackendService;
 import iopiotrsukiennik.whowhen.shared.form.WhoWhenRequestForm;
+import iopiotrsukiennik.whowhen.shared.util.HttpUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 
 @Controller
 public class FrontController {
-
 
     @Resource(name = "backendService")
     private IBackendService backendService;
@@ -32,12 +34,16 @@ public class FrontController {
         return "index";
     }
 
+    @ModelAttribute("applicationPath")
+    public String getApplicationPath(HttpServletRequest request){
+        return HttpUtil.getApplicationPath(request);
+    }
+
 
     @ModelAttribute("acceptableFormats")
     public String[] getAcceptableFormats(){
         return  backendService.getAcceptableFormats();
     }
-
 
     @ModelAttribute("FORM")
     public WhoWhenRequestForm getWhoWhenRequestForm(){

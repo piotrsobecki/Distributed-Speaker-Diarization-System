@@ -15,6 +15,7 @@ import iopiotrsukiennik.whowhen.backend.api.outer.*;
 import iopiotrsukiennik.whowhen.shared.aop.MonitorAfter;
 import iopiotrsukiennik.whowhen.shared.aop.MonitorBefore;
 import iopiotrsukiennik.whowhen.shared.aop.MonitorExclude;
+import iopiotrsukiennik.whowhen.shared.event.ProgressNotifier;
 import iopiotrsukiennik.whowhen.shared.form.RequestData;
 import iopiotrsukiennik.whowhen.shared.memcached.MemcachedClientWrapper;
 import iopiotrsukiennik.whowhen.shared.util.progress.Progress;
@@ -46,7 +47,8 @@ public class BackendServiceImpl implements IBackendService {
     private BalancerService balancerService;
 
     @Resource
-    private RequestProgressMailNotifier requestCompletionManager;
+    private ProgressNotifier progressNotifier;
+
 
     @Override
     public String[] getAcceptableFormats() {
@@ -65,6 +67,7 @@ public class BackendServiceImpl implements IBackendService {
         updateProgress(new Progress(), 0, "CONVERTING", memcachedKeyInterface.progressKey());
         ConvertionRequest convertionRequest = new ConvertionRequest(backendRequest.getRequestIdentifier(),backendRequest.getSubmittedFile());
         balancerService.handle(convertionRequest);
+        progressNotifier.notifyAll(0,backendRequest.getRequestIdentifier(),backendRequest.getRequestData());
         return new BackendResponse(backendRequest.getRequestIdentifier());
     }
 
@@ -101,6 +104,7 @@ public class BackendServiceImpl implements IBackendService {
         MemcachedKeyInterface memcachedKeyInterface = new MemcachedKeyInterface(convertionResponse.getRequestIdentifier());
         Progress progress = getProgress(convertionResponse);
         updateProgress(progress,25,"PROCESSING",memcachedKeyInterface.progressKey());
+        progressNotifier.notifyAll(25,convertionResponse.getRequestIdentifier());
         memcachedClientWrapper.put(memcachedKeyInterface.convertedAudioInfoResponseKey(),convertionResponse.getConvertedAudioInfo());
         ProcessingRequest processingRequest = new ProcessingRequest(convertionResponse.getRequestIdentifier(),convertionResponse.getConvertedAudioInfo());
         balancerService.handle(processingRequest);
@@ -111,6 +115,7 @@ public class BackendServiceImpl implements IBackendService {
         MemcachedKeyInterface memcachedKeyInterface = new MemcachedKeyInterface(processingResponse.getRequestIdentifier());
         Progress progress = getProgress(processingResponse);
         updateProgress(progress,50,"CLASSIFYING",memcachedKeyInterface.progressKey());
+        progressNotifier.notifyAll(50,processingResponse.getRequestIdentifier());
         memcachedClientWrapper.put(memcachedKeyInterface.processingResponseIntervalLength(),processingResponse.getFeaturesIndexLengthMillis());
         RequestData requestData = memcachedClientWrapper.get(memcachedKeyInterface.requestKey(), RequestData.class);
         ClassificationRequest classificationRequest = new ClassificationRequest(processingResponse.getRequestIdentifier(),processingResponse.getFeatures(),requestData.getSpeakersCount());
@@ -123,6 +128,7 @@ public class BackendServiceImpl implements IBackendService {
         MemcachedKeyInterface memcachedKeyInterface = new MemcachedKeyInterface(classificationResponse.getRequestIdentifier());
         Progress progress =  getProgress(classificationResponse);
         updateProgress(progress, 75, "SPLITTING", memcachedKeyInterface.progressKey());
+        progressNotifier.notifyAll(75,classificationResponse.getRequestIdentifier());
         memcachedClientWrapper.put(memcachedKeyInterface.classificationResponseKey(),classificationResponse);
         AudioInfo convertedAudioInfo     =    memcachedClientWrapper.get(memcachedKeyInterface.convertedAudioInfoResponseKey(),AudioInfo.class);
         Double featuresIndexIntervalLength =    memcachedClientWrapper.get(memcachedKeyInterface.processingResponseIntervalLength(),Double.class);
@@ -147,9 +153,7 @@ public class BackendServiceImpl implements IBackendService {
         Progress progress = getProgress(splitterResponse);
         updateProgress(progress, 100, "DONE", memcachedKeyInterface.progressKey());
         RequestData requestData = memcachedClientWrapper.get(memcachedKeyInterface.requestKey(), RequestData.class);
-        if (requestData!= null && requestData.getEmail()!=null && !requestData.getEmail().isEmpty()){
-            requestCompletionManager.sendCompletionNotification(splitterResponse.getRequestIdentifier(),requestData); //Send Email
-        }
+        progressNotifier.notifyAll(100,splitterResponse.getRequestIdentifier(),requestData);
     }
 
     public void updateProgress(Progress progress,int progressPercent, String status,String progressKey){
