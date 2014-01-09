@@ -4,7 +4,6 @@ import iopiotrsukiennik.whowhen.shared.util.math.MeanCalculator;
 import org.apache.commons.lang.ArrayUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

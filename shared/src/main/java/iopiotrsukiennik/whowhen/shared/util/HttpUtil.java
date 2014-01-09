@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 public class HttpUtil {
 
     public static String getDomainPath(HttpServletRequest httpServletRequest){
-        String applicationPath = "http://"+httpServletRequest.getRemoteHost();
+        String applicationPath = "http://"+httpServletRequest.getServerName();
         if (httpServletRequest.getRemotePort()!=80){
-            applicationPath+=":"+httpServletRequest.getRemotePort();
+            applicationPath+=":"+httpServletRequest.getServerPort();
         }
         return applicationPath;
     }

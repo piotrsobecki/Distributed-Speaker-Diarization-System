@@ -6,7 +6,6 @@ import iopiotrsukiennik.whowhen.backend.api.inner.splitter.SplitterResponse;
 import iopiotrsukiennik.whowhen.backend.api.inner.util.AudioInfo;
 import iopiotrsukiennik.whowhen.backend.api.inner.util.AudioInfoUtil;
 import iopiotrsukiennik.whowhen.backend.api.outer.IBackendService;
-import iopiotrsukiennik.whowhen.shared.aop.MonitorBefore;
 import iopiotrsukiennik.whowhen.splitter.AudioFileSplitter;
 import iopiotrsukiennik.whowhen.splitter.IndexIntervalsToTimelineMapper;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -32,7 +31,6 @@ import java.util.concurrent.Executors;
  * Time: 15:40
  * To change this template use File | Settings | File Templates.
  */
-@MonitorBefore
 @Component("splitterServiceImpl")
 public class SplitterServiceImpl implements SplitterService {
 

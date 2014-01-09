@@ -2,11 +2,8 @@ package iopiotrsukiennik.whowhen.processer.transformer;
 
 import iopiotrsukiennik.whowhen.shared.util.math.MathUtil;
 import iopiotrsukiennik.whowhen.shared.util.math.MeanCalculator;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

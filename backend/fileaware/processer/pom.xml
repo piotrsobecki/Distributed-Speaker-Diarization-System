@@ -13,6 +13,17 @@
     <packaging>war</packaging>
     <dependencies>
         <dependency>
+            <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>servletapi</groupId>
+            <artifactId>servletapi</artifactId>
+            <version>2.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>comirva</groupId>
             <artifactId>comirva</artifactId>
             <version>0.36</version>
@@ -20,14 +31,24 @@
             <systemPath>${pom.basedir}/lib/comirva-0.36.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
-            <artifactId>api</artifactId>
-            <version>1.0</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-version}</version>
         </dependency>
         <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib-full</artifactId>
-            <version>2.0.2</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjrt.version}</version>
         </dependency>
     </dependencies>
     <build>

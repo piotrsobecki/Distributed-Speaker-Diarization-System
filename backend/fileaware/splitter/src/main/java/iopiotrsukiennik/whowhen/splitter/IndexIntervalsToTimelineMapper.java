@@ -1,7 +1,5 @@
 package iopiotrsukiennik.whowhen.splitter;
 
-import iopiotrsukiennik.whowhen.shared.aop.MonitorBefore;
-
 import java.util.*;
 
 /**
@@ -11,7 +9,6 @@ import java.util.*;
  * Time: 01:55
  * To change this template use File | Settings | File Templates.
  */
-@MonitorBefore
 public class IndexIntervalsToTimelineMapper {
     private double keyLengthMillis;
     public IndexIntervalsToTimelineMapper(double keyLengthMillis) {

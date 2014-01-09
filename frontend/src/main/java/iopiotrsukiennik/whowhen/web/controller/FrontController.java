@@ -6,9 +6,7 @@ import iopiotrsukiennik.whowhen.shared.util.HttpUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 

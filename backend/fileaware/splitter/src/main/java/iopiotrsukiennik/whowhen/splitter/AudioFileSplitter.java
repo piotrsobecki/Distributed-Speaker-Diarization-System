@@ -1,6 +1,5 @@
 package iopiotrsukiennik.whowhen.splitter;
 
-import iopiotrsukiennik.whowhen.shared.aop.MonitorBefore;
 import iopiotrsukiennik.whowhen.shared.util.AudioUtil;
 
 import javax.sound.sampled.*;
@@ -18,7 +17,6 @@ import java.util.Map;
  * Time: 15:26
  * To change this template use File | Settings | File Templates.
  */
-@MonitorBefore
 public class AudioFileSplitter {
 
     public Map<String,File> split(AudioFormat audioFormat,double audioLength,File audioFile,Map<String, List<double[]>> intervals,File outputDirectory,AudioFileFormat.Type outputType) {

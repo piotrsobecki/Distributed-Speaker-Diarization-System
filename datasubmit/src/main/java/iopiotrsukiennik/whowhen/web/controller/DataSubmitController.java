@@ -7,7 +7,6 @@ import iopiotrsukiennik.whowhen.shared.form.WhoWhenRequestForm;
 import iopiotrsukiennik.whowhen.web.util.RequestValidator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.DigestUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.concurrent.ExecutorService;
 
 @Controller
 public class DataSubmitController  {
@@ -58,8 +56,8 @@ public class DataSubmitController  {
                     outputStream.write(fileBytes);
                     outputStream.close();
                 }
-                BackendRequest backendRequest = new BackendRequest(requestIdentifier,form.getRequestData(),targetFile);
-                BackendResponse backendResponse = backendService.handle(backendRequest);
+                BackendRequest backendRequest = new BackendRequest(requestIdentifier,FormUtil.toRequestData(form),targetFile);
+                backendService.handle(backendRequest);
                 return "redirect:"+redirect+backendRequest.getRequestIdentifier()+"/request";
 
             } catch (Exception e) {

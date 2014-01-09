@@ -12,9 +12,6 @@ import iopiotrsukiennik.whowhen.backend.api.inner.splitter.SplitterRequest;
 import iopiotrsukiennik.whowhen.backend.api.inner.splitter.SplitterResponse;
 import iopiotrsukiennik.whowhen.backend.api.inner.util.AudioInfo;
 import iopiotrsukiennik.whowhen.backend.api.outer.*;
-import iopiotrsukiennik.whowhen.shared.aop.MonitorAfter;
-import iopiotrsukiennik.whowhen.shared.aop.MonitorBefore;
-import iopiotrsukiennik.whowhen.shared.aop.MonitorExclude;
 import iopiotrsukiennik.whowhen.shared.event.ProgressNotifier;
 import iopiotrsukiennik.whowhen.shared.form.RequestData;
 import iopiotrsukiennik.whowhen.shared.memcached.MemcachedClientWrapper;
@@ -35,8 +32,6 @@ import java.util.concurrent.TimeUnit;
  * Time: 17:12
  * To change this template use File | Settings | File Templates.
  */
-@MonitorBefore
-@MonitorAfter
 @Component("backendServiceImpl")
 public class BackendServiceImpl implements IBackendService {
 
@@ -88,12 +83,10 @@ public class BackendServiceImpl implements IBackendService {
     }
 
     @Override
-    @MonitorExclude
     public GetProgressResponse getProgress(GetProgressRequest getProgressRequest) {
         return new GetProgressResponse(getProgress((IRequestIdentifierBound)getProgressRequest));
     }
 
-    @MonitorExclude
     public Progress getProgress(IRequestIdentifierBound requestIdentifierBound) {
         MemcachedKeyInterface memcachedKeyInterface = new MemcachedKeyInterface(requestIdentifierBound.getRequestIdentifier());
         return memcachedClientWrapper.get(memcachedKeyInterface.progressKey(),Progress.class);

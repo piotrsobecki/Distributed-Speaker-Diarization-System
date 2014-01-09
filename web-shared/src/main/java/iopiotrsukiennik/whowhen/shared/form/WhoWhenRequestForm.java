@@ -2,8 +2,6 @@ package iopiotrsukiennik.whowhen.shared.form;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import java.io.Serializable;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Piotr
@@ -52,14 +50,6 @@ public class WhoWhenRequestForm  {
     public void setEmail(String email) {
         this.email = email;
     }
-    public RequestData getRequestData(){
-        RequestData requestData = new RequestData();
-        requestData.setEmail(email);
-        requestData.setFileName(fileName);
-        requestData.setSpeakersCount(speakersCount);
-        return requestData;
-    }
-
     @Override
     public String toString() {
         return "WhoWhenRequestForm{" +
