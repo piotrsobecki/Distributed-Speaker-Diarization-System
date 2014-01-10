@@ -21,7 +21,7 @@
         var statusMapDone = <spring:message code="request.status.status.map_done"/>;
         var getProgressURL = "<c:url value="http://${applicationPath}/${requestIdentifier}/progress"/>";
         var getTimelineURL = "<c:url value="http://${applicationPath}/${requestIdentifier}/timeline"/>";
-        var convertedAudioURL = "<c:url value="http://static.${applicationPath}/${requestIdentifier}"/>";
+        var convertedAudioURL = "<c:url value="http://static.${domainPath}/${requestIdentifier}"/>";
         var progress=0;
         var progressBarActive=false;
         var status;

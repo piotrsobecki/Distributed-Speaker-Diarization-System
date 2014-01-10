@@ -43,6 +43,10 @@ public class RequestController {
         return getProgressResponse.getLevelledLabelledIntervals();
     }
 
+    @ModelAttribute("domainPath")
+    public String getDomainPath(HttpServletRequest request){
+        return HttpUtil.getDomainPath(request);
+    }
     @ModelAttribute("applicationPath")
     public String getApplicationPath(HttpServletRequest request){
         return HttpUtil.getApplicationContextPath(request);
