@@ -7,6 +7,7 @@
         <groupId>pl.piotrsukiennik.whowhen</groupId>
         <version>1.0</version>
     </parent>
+    <name>WhoWhen shared</name>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
     <version>1.0</version>

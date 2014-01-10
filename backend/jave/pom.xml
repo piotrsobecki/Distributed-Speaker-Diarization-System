@@ -11,7 +11,7 @@
     <artifactId>jave</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>WhoWhen Jave</name>
+    <name>Jave - FFMPEG Wrapper</name>
     <dependencies>
         <dependency>
             <groupId>commons-io</groupId>

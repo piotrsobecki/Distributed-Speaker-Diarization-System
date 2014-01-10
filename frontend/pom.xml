@@ -5,7 +5,7 @@
 	<artifactId>frontend</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
-    <name>WhoWhen Frontend</name>
+    <name>Web frontend</name>
     <parent>
         <groupId>pl.piotrsukiennik.whowhen</groupId>
         <artifactId>whowhen</artifactId>

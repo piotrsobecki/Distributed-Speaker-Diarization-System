@@ -7,6 +7,7 @@
         <artifactId>fileaware</artifactId>
         <version>1.0</version>
     </parent>
+    <name>Audio file splitter</name>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>splitter</artifactId>
     <version>1.0</version>
