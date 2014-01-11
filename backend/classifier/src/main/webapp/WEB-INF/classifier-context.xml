@@ -6,13 +6,14 @@
 
     <bean id="kMeans" class="weka.clusterers.SimpleKMeans"></bean>
 
-    <bean id="kMeansLabelingClassifier" class="iopiotrsukiennik.whowhen.classification.impl.weka.WekaLabelingClusterer">
+    <bean id="kMeansLabelingClassifier"
+          class="pl.piotrsukiennik.whowhen.classification.impl.weka.WekaLabelingClusterer">
         <constructor-arg index="0" ref="kMeans"/>
         <property name="requiredLabel" value="NOT_SILENCE"/>
     </bean>
 
     <bean id="silenceClassifier"
-          class="iopiotrsukiennik.whowhen.classification.impl.quality.FeaturesAbsoluteSumClassifier">
+          class="pl.piotrsukiennik.whowhen.classification.impl.quality.FeaturesAbsoluteSumClassifier">
         <property name="requiredQuality" value="30"/>
         <property name="featuresFrom" value="0"/>
         <property name="featuresTo" value="11"/>
@@ -59,7 +60,7 @@
               </list>
           </property>
       </bean>
-      <bean id="emLabelingClassifier" class="iopiotrsukiennik.whowhen.classification.impl.weka.FilteringWekaLabelingClusterer">
+      <bean id="emLabelingClassifier" class="pl.piotrsukiennik.whowhen.classification.impl.weka.FilteringWekaLabelingClusterer">
           <constructor-arg index="0" ref="EMClusterer"/>
           <constructor-arg index="1" value="weka.filters.unsupervised.instance.RemovePercentage"/>
           <property name="requiredLabel" value="NOT_SILENCE"/>

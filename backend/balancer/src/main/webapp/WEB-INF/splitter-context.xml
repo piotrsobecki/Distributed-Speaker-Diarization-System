@@ -8,7 +8,7 @@
 
     <util:properties id="splitterProperties" location="/WEB-INF/properties/splitter-services.properties"/>
     <bean id="splitterService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.splitter.SplitterService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.splitter.SplitterService"/>
         <property name="serviceUrl" value="#{splitterProperties['splitter.url']}/splitter.service"/>
     </bean>
     <util:list id="splitters">

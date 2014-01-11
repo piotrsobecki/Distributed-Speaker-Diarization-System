@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-    <context:component-scan base-package="iopiotrsukiennik"/>
+    <context:component-scan base-package="pl.piotrsukiennik"/>
     <mvc:annotation-driven/>
     <aop:aspectj-autoproxy/>
 
@@ -20,7 +20,7 @@
 
 
     <bean id="balancerService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
         <property name="service" ref="balancerServiceImpl"/>
     </bean>
 

@@ -7,8 +7,8 @@
         <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="465"/>
         <property name="protocol" value="smtps"/>
-        <property name="username" value="whowhen.piotrsukiennik@gmail.com"/>
-        <property name="password" value="piotrsukiennik"/>
+        <property name="username" value="whowhen.pl.piotrsukiennik@gmail.com"/>
+        <property name="password" value="pl.piotrsukiennik"/>
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.transport.protocol">smtp</prop>
@@ -29,10 +29,10 @@
         </property>
     </bean>
 
-    <!--  <bean id="requestCompletionManager" class="iopiotrsukiennik.whowhen.backend.service.event.MailSenderProgressListener">
+    <!--  <bean id="requestCompletionManager" class="pl.piotrsukiennik.whowhen.backend.service.event.MailSenderProgressListener">
           <property name="mailSender" ref="mailSender"/>
           <property name="velocityEngine" ref="velocityEngine"/>
-          <property name="from" value="whowhen.piotrsukiennik@gmail.com"/>
+          <property name="from" value="whowhen.pl.piotrsukiennik@gmail.com"/>
           <property name="subject" value="Your request has been completed"/>
       </bean>-->
 </beans>

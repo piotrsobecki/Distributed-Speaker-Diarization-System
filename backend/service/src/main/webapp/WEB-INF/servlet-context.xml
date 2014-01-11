@@ -13,25 +13,25 @@
         http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
     <aop:aspectj-autoproxy/>
-    <bean id="memcachedWrapper" class="iopiotrsukiennik.whowhen.shared.memcached.MemcachedClientWrapper">
+    <bean id="memcachedWrapper" class="pl.piotrsukiennik.whowhen.shared.memcached.MemcachedClientWrapper">
         <constructor-arg index="0" ref="memcachedClient"/>
     </bean>
-    <context:component-scan base-package="iopiotrsukiennik"/>
+    <context:component-scan base-package="pl.piotrsukiennik"/>
     <mvc:annotation-driven/>
     <util:properties id="concurrencyProperties" location="/WEB-INF/properties/concurrency.properties"/>
     <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties"/>
 
 
-    <bean id="progressNotifier" class="iopiotrsukiennik.whowhen.shared.event.ProgressNotifierImpl"/>
+    <bean id="progressNotifier" class="pl.piotrsukiennik.whowhen.shared.event.ProgressNotifierImpl"/>
 
     <bean id="balancerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
         <property name="serviceUrl" value="#{serviceProperties['balancer.url']}/balancer.service"/>
     </bean>
 
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
         <property name="service" ref="backendServiceImpl"/>
     </bean>
 

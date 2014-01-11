@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>backend</artifactId>
-        <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
+        <groupId>pl.pl.piotrsukiennik.whowhen.backend</groupId>
         <version>1.0</version>
     </parent>
     <name>Backend logic service</name>
@@ -15,12 +15,12 @@
     <dependencies>
 
         <dependency>
-            <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
+            <groupId>pl.pl.piotrsukiennik.whowhen.backend</groupId>
             <artifactId>api</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>pl.piotrsukiennik.whowhen</groupId>
+            <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
             <artifactId>shared</artifactId>
             <version>1.0</version>
         </dependency>

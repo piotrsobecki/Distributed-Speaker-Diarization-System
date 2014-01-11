@@ -9,20 +9,20 @@
 		http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-    <context:component-scan base-package="iopiotrsukiennik"/>
+    <context:component-scan base-package="pl.piotrsukiennik"/>
     <mvc:annotation-driven/>
     <import resource="classifier-context.xml"/>
     <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties"/>
 
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
         <property name="serviceUrl" value="#{serviceProperties['backend.url']}/backend.service"/>
     </bean>
 
     <bean id="classificationService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
         <property name="serviceInterface"
-                  value="iopiotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
+                  value="pl.piotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
         <property name="service" ref="classificationServiceImpl"/>
     </bean>
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">

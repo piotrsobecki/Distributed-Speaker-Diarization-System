@@ -4,17 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <name>WhoWhen Parent</name>
     <description>Distributed speaker diarization system</description>
-    <groupId>pl.piotrsukiennik.whowhen</groupId>
+    <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
     <artifactId>whowhen</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <url>http://whowhen.piotrsukiennik-dev.pl</url>
+    <url>http://whowhen.pl.piotrsukiennik-dev.pl</url>
     <developers>
         <developer>
             <name>Piotr Sukiennik</name>
-            <organizationUrl>http://piotrsukiennik.pl</organizationUrl>
-            <email>piotrsukiennik@gmail.com</email>
+            <organizationUrl>http://pl.piotrsukiennik.pl</organizationUrl>
+            <email>pl.piotrsukiennik@gmail.com</email>
             <roles>
                 <role>owner</role>
                 <role>architect</role>
@@ -23,22 +23,22 @@
     </developers>
     <organization>
         <name>Inżynieria Oprogramowania Piotr Sukiennik</name>
-        <url>http://piotrsukiennik.pl</url>
+        <url>http://pl.piotrsukiennik.pl</url>
     </organization>
     <scm>
-        <connection>scm:git:git://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System.git</connection>
+        <connection>scm:git:git://github.com/pl.piotrsukiennik/Distributed-Speaker-Diarization-System.git</connection>
         <developerConnection>
-            scm:git:https://piotrsukiennik@github.com/piotrsukiennik/Distributed-Speaker-Diarization-System.git
+            scm:git:https://pl.piotrsukiennik@github.com/pl.piotrsukiennik/Distributed-Speaker-Diarization-System.git
         </developerConnection>
-        <url>https://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System</url>
+        <url>https://github.com/pl.piotrsukiennik/Distributed-Speaker-Diarization-System</url>
     </scm>
     <ciManagement>
         <system>jenkins</system>
-        <url>http://jenkins.piotrsukiennik-dev.pl</url>
+        <url>http://jenkins.pl.piotrsukiennik-dev.pl</url>
     </ciManagement>
     <issueManagement>
         <system>redmine</system>
-        <url>http://redmine.piotrsukiennik-dev.pl</url>
+        <url>http://redmine.pl.piotrsukiennik-dev.pl</url>
     </issueManagement>
     <inceptionYear>2013</inceptionYear>
     <properties>

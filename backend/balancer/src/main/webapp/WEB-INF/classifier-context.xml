@@ -9,7 +9,7 @@
     <util:properties id="classifierProperties" location="/WEB-INF/properties/classifier-services.properties"/>
     <bean id="classifierService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface"
-                  value="iopiotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
+                  value="pl.piotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
         <property name="serviceUrl" value="#{classifierProperties['classifier.url']}/classifier.service"/>
     </bean>
 

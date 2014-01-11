@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="mffcc" class="iopiotrsukiennik.whowhen.processer.mfcc.MFCCBuilder">
+    <bean id="mffcc" class="pl.piotrsukiennik.whowhen.processer.mfcc.MFCCBuilder">
         <constructor-arg index="0" value="16000"/>
         <!--sampleRate-->
         <constructor-arg index="1" value="512"/>
@@ -24,10 +24,10 @@
         <constructor-arg index="4" value="false"/>
     </bean>
 
-    <bean id="mfccAudioFileProcessor" class="iopiotrsukiennik.whowhen.processer.mfcc.MFCCAudioFileProcessor">
+    <bean id="mfccAudioFileProcessor" class="pl.piotrsukiennik.whowhen.processer.mfcc.MFCCAudioFileProcessor">
         <constructor-arg index="0" ref="mffcc"/>
         <constructor-arg index="1">
-            <bean class="iopiotrsukiennik.whowhen.processer.AudioPreProcessorBuilder">
+            <bean class="pl.piotrsukiennik.whowhen.processer.AudioPreProcessorBuilder">
                 <constructor-arg index="0" ref="audioFormat"/>
             </bean>
         </constructor-arg>

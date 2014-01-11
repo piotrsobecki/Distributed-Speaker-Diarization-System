@@ -15,7 +15,7 @@
        ">
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <context:component-scan base-package="iopiotrsukiennik"/>
+    <context:component-scan base-package="pl.piotrsukiennik"/>
     <mvc:annotation-driven/>
 
     <util:properties id="requestProperties" location="/WEB-INF/properties/request.properties"/>
@@ -57,14 +57,14 @@
 
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
         <property name="serviceUrl" value="#{serviceProperties['backend.url']}/backend.service"/>
     </bean>
 
     <!--
         RMI
     <bean id="backendService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
         <property name="serviceUrl" value="#{serviceProperties['backend.url.rmi']}"/>
     </bean>-->
 

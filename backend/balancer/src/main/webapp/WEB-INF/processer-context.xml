@@ -9,7 +9,7 @@
     <util:properties id="processerProperties" location="/WEB-INF/properties/processer-services.properties"/>
     <bean id="processerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface"
-                  value="iopiotrsukiennik.whowhen.backend.api.inner.processing.ProcessingService"/>
+                  value="pl.piotrsukiennik.whowhen.backend.api.inner.processing.ProcessingService"/>
         <property name="serviceUrl" value="#{processerProperties['processer.url']}/processer.service"/>
     </bean>
     <util:list id="processers">
