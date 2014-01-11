@@ -7,11 +7,17 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi">
 <head>
+    <mytags:meta title="WhoWhen" />
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-<mytags:jquery />
-<mytags:style />
+    <mytags:jquery />
+    <mytags:style />
 
-    <title>WhoWhen</title>
+
+
+
+
+
+
     <script type="text/javascript">
         var stepLocations = {0:0};
         function levelAction(level,success){
@@ -66,8 +72,7 @@
 
     </script>
 </head>
-<body accent='blue' theme='light'>
-
+<body accent='blue' theme='light' lang="en">
     <div id="progress_window">
         <ol id="progress_steps">
             <li id="progress_step_0" class="progress_step_past progress_step_active"><h3><spring:message code="front.progress.step0"/></h3></li>
@@ -77,7 +82,6 @@
             <li id="progress_step_3"><h3><spring:message code="front.progress.step4"/></h3></li>
         </ol>
     </div>
-
     <script type="text/javascript">
         $("ol#progress_steps li").click(function(event){
             scrollToLevel(Number(this.id.substring("progress_step_".length)));
@@ -99,7 +103,7 @@
                 </div>
                 <div class='pivot-item'>
                     <h3><spring:message code="front.step0.author"/></h3>
-                    <spring:message code="front.step0.author.text"/>
+                    <spring:message code="front.step0.author.text" htmlEscape="false"/>
                 </div>
                 <div class='pivot-item'>
                     <h3><spring:message code="front.step0.language.title"/></h3>
@@ -107,6 +111,10 @@
                         <li><a title="<spring:message code="front.step0.languages.pl"/>" href="?lang=pl">.pl</a></li>
                         <li><a title="<spring:message code="front.step0.languages.en"/>" href="?lang=en">.en</a></li>
                     </ul>
+                </div>
+                <div class='pivot-item'>
+                    <h3><spring:message code="front.step0.help.title"/></h3>
+                    <spring:message code="front.step0.help.text" htmlEscape="false"/>
                 </div>
             </div>
         </div>

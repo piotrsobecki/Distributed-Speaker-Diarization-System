@@ -11,9 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
     <artifactId>datasubmit</artifactId>
-
      <dependencies>
-
          <dependency>
              <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
              <artifactId>api</artifactId>
