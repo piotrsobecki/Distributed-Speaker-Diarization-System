@@ -3,22 +3,24 @@ package iopiotrsukiennik.whowhen.processer.mfcc;
 import comirva.audio.util.MFCC;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 31.10.12
- * Time: 23:08
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 public class MFCCBuilder {
     private float sampleRate;
+
     private int windowSize;
+
     private int numberCoefficients;
+
     private boolean useFirstCoefficient;
+
     private double minFreq;
+
     private double maxFreq;
+
     private int numberFilters;
 
-    public MFCCBuilder(float sampleRate, int windowSize, int numberCoefficients, boolean useFirstCoefficient, double minFreq, double maxFreq, int numberFilters) throws IllegalArgumentException {
+    public MFCCBuilder( float sampleRate, int windowSize, int numberCoefficients, boolean useFirstCoefficient, double minFreq, double maxFreq, int numberFilters ) throws IllegalArgumentException {
         this.sampleRate = sampleRate;
         this.windowSize = windowSize;
         this.numberCoefficients = numberCoefficients;
@@ -29,14 +31,14 @@ public class MFCCBuilder {
     }
 
     public MFCC build() {
-        return new MFCC(sampleRate, windowSize, numberCoefficients, useFirstCoefficient, minFreq, maxFreq, numberFilters);
+        return new MFCC( sampleRate, windowSize, numberCoefficients, useFirstCoefficient, minFreq, maxFreq, numberFilters );
     }
 
     public float getSampleRate() {
         return sampleRate;
     }
 
-    public void setSampleRate(float sampleRate) {
+    public void setSampleRate( float sampleRate ) {
         this.sampleRate = sampleRate;
     }
 
@@ -44,7 +46,7 @@ public class MFCCBuilder {
         return windowSize;
     }
 
-    public void setWindowSize(int windowSize) {
+    public void setWindowSize( int windowSize ) {
         this.windowSize = windowSize;
     }
 
@@ -52,7 +54,7 @@ public class MFCCBuilder {
         return numberCoefficients;
     }
 
-    public void setNumberCoefficients(int numberCoefficients) {
+    public void setNumberCoefficients( int numberCoefficients ) {
         this.numberCoefficients = numberCoefficients;
     }
 
@@ -60,7 +62,7 @@ public class MFCCBuilder {
         return useFirstCoefficient;
     }
 
-    public void setUseFirstCoefficient(boolean useFirstCoefficient) {
+    public void setUseFirstCoefficient( boolean useFirstCoefficient ) {
         this.useFirstCoefficient = useFirstCoefficient;
     }
 
@@ -68,7 +70,7 @@ public class MFCCBuilder {
         return minFreq;
     }
 
-    public void setMinFreq(double minFreq) {
+    public void setMinFreq( double minFreq ) {
         this.minFreq = minFreq;
     }
 
@@ -76,7 +78,7 @@ public class MFCCBuilder {
         return maxFreq;
     }
 
-    public void setMaxFreq(double maxFreq) {
+    public void setMaxFreq( double maxFreq ) {
         this.maxFreq = maxFreq;
     }
 
@@ -84,7 +86,7 @@ public class MFCCBuilder {
         return numberFilters;
     }
 
-    public void setNumberFilters(int numberFilters) {
+    public void setNumberFilters( int numberFilters ) {
         this.numberFilters = numberFilters;
     }
 }

@@ -5,22 +5,20 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 11.11.12
- * Time: 17:22
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
-public class Progress implements IProgress, Serializable{
+public class Progress implements IProgress, Serializable {
     private float progress;
+
     private String status;
-    private Map<String,String> progressInfo = new Hashtable<String, String>();
+
+    private Map<String, String> progressInfo = new Hashtable<String, String>();
 
     public float getProgress() {
         return progress;
     }
 
-    public void setProgress(float progress) {
+    public void setProgress( float progress ) {
         this.progress = progress;
     }
 
@@ -28,7 +26,7 @@ public class Progress implements IProgress, Serializable{
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus( String status ) {
         this.status = status;
     }
 
@@ -36,7 +34,7 @@ public class Progress implements IProgress, Serializable{
         return progressInfo;
     }
 
-    public void setProgressInfo(Map<String, String> progressInfo) {
+    public void setProgressInfo( Map<String, String> progressInfo ) {
         this.progressInfo = progressInfo;
     }
 }

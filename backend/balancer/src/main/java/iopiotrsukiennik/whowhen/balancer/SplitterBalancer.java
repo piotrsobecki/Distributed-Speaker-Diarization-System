@@ -7,11 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 12.11.12
- * Time: 23:20
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 @Component
 public class SplitterBalancer {
@@ -20,8 +16,8 @@ public class SplitterBalancer {
     private SplitterService[] splitterServices;
 
 
-    public void handle(SplitterRequest splitterRequest) {
-        int randomId = new Double(splitterServices.length*Math.random()).intValue();
-        splitterServices[randomId].handle(splitterRequest);
+    public void handle( SplitterRequest splitterRequest ) {
+        int randomId = new Double( splitterServices.length * Math.random() ).intValue();
+        splitterServices[randomId].handle( splitterRequest );
     }
 }

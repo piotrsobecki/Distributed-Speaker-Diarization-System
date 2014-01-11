@@ -13,14 +13,14 @@
     <artifactId>backend</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-     <modules>
-         <module>api</module>
-         <module>service</module>
-         <module>balancer</module>
-         <module>classifier</module>
-         <module>jave</module>
-         <module>fileaware</module>
-     </modules>
+    <modules>
+        <module>api</module>
+        <module>service</module>
+        <module>balancer</module>
+        <module>classifier</module>
+        <module>jave</module>
+        <module>fileaware</module>
+    </modules>
     <dependencies>
 
     </dependencies>

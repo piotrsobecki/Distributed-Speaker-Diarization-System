@@ -7,17 +7,13 @@ import java.io.File;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 08.11.12
- * Time: 23:26
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
-public class ConvertionRequest  extends IRequestIdentifierBound implements IConvertionServiceRequest, Serializable {
+public class ConvertionRequest extends IRequestIdentifierBound implements IConvertionServiceRequest, Serializable {
 
 
-    public ConvertionRequest(String requestIdentifier, File fileToConvert) {
-        super(requestIdentifier);
+    public ConvertionRequest( String requestIdentifier, File fileToConvert ) {
+        super( requestIdentifier );
         this.fileToConvert = fileToConvert;
     }
 
@@ -27,14 +23,14 @@ public class ConvertionRequest  extends IRequestIdentifierBound implements IConv
         return fileToConvert;
     }
 
-    public void setFileToConvert(File fileToConvert) {
+    public void setFileToConvert( File fileToConvert ) {
         this.fileToConvert = fileToConvert;
     }
 
     @Override
     public String toString() {
         return "ConvertionRequest{" +
-                "fileToConvert=" + fileToConvert +
-                "} " + super.toString();
+         "fileToConvert=" + fileToConvert +
+         "} " + super.toString();
     }
 }

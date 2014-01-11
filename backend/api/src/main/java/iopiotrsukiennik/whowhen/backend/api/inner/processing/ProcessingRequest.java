@@ -6,17 +6,13 @@ import iopiotrsukiennik.whowhen.backend.api.inner.util.AudioInfo;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 08.11.12
- * Time: 23:26
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
-public class ProcessingRequest  extends IRequestIdentifierBound implements Serializable {
+public class ProcessingRequest extends IRequestIdentifierBound implements Serializable {
     private AudioInfo convertedAudioInfo;
 
-    public ProcessingRequest(String requestIdentifier,AudioInfo convertedAudioInfo) {
-        super(requestIdentifier);
+    public ProcessingRequest( String requestIdentifier, AudioInfo convertedAudioInfo ) {
+        super( requestIdentifier );
         this.convertedAudioInfo = convertedAudioInfo;
     }
 
@@ -27,7 +23,7 @@ public class ProcessingRequest  extends IRequestIdentifierBound implements Seria
     @Override
     public String toString() {
         return "ProcessingRequest{" +
-                "convertedAudioInfo=" + convertedAudioInfo +
-                "} " + super.toString();
+         "convertedAudioInfo=" + convertedAudioInfo +
+         "} " + super.toString();
     }
 }

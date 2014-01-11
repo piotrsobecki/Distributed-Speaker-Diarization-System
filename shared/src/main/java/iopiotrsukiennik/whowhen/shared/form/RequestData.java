@@ -3,15 +3,13 @@ package iopiotrsukiennik.whowhen.shared.form;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 02.12.12
- * Time: 20:08
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
-public class RequestData implements Serializable{
+public class RequestData implements Serializable {
     private String email;
+
     private String fileName;
+
     private Integer speakersCount;
 
 
@@ -19,7 +17,7 @@ public class RequestData implements Serializable{
         return speakersCount;
     }
 
-    public void setSpeakersCount(Integer speakersCount) {
+    public void setSpeakersCount( Integer speakersCount ) {
         this.speakersCount = speakersCount;
     }
 
@@ -27,7 +25,7 @@ public class RequestData implements Serializable{
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail( String email ) {
         this.email = email;
     }
 
@@ -35,7 +33,7 @@ public class RequestData implements Serializable{
         return fileName;
     }
 
-    public void setFileName(String fileName) {
+    public void setFileName( String fileName ) {
         this.fileName = fileName;
     }
 }

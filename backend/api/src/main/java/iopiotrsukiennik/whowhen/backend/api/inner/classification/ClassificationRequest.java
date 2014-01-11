@@ -6,20 +6,17 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 08.11.12
- * Time: 23:26
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 public class ClassificationRequest extends IRequestIdentifierBound implements Serializable {
     private List<double[]> featuresData;
+
     private Integer speakersCount;
 
-    public ClassificationRequest(String requestIdentifier, List<double[]> featuresData, Integer speakersCount) {
-        super(requestIdentifier);
+    public ClassificationRequest( String requestIdentifier, List<double[]> featuresData, Integer speakersCount ) {
+        super( requestIdentifier );
         this.featuresData = featuresData;
-        this.speakersCount=speakersCount;
+        this.speakersCount = speakersCount;
     }
 
     public Integer getSpeakersCount() {
@@ -33,7 +30,7 @@ public class ClassificationRequest extends IRequestIdentifierBound implements Se
     @Override
     public String toString() {
         return "ClassificationRequest{" +
-                "featuresData=" + featuresData +
-                "} " + super.toString();
+         "featuresData=" + featuresData +
+         "} " + super.toString();
     }
 }

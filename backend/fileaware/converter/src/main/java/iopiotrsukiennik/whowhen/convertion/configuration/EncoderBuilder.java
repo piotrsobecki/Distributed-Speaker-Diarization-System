@@ -4,76 +4,71 @@ import it.sauronsoftware.jave.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 20.10.12
- * Time: 22:16
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 
 @Configuration
 public class EncoderBuilder {
 
-    @Value("#{converterProperties['Converter.codec']}")
+    @Value( "#{converterProperties['Converter.codec']}" )
     private String codec;
 
-    @Value("#{new Integer(audioProperties['AudioFormat.sampleRate'])}")
+    @Value( "#{new Integer(audioProperties['AudioFormat.sampleRate'])}" )
     private Integer samplingRate;
 
-    @Value("#{new Integer(audioProperties['AudioFormat.channels'])}")
+    @Value( "#{new Integer(audioProperties['AudioFormat.channels'])}" )
     private Integer channels;
 
-    @Value("#{new Integer(converterProperties['Converter.volume'])}")
+    @Value( "#{new Integer(converterProperties['Converter.volume'])}" )
     private Integer volume;
 
-    @Value("#{new Integer(audioProperties['AudioFormat.sampleSizeInBits'])}")
+    @Value( "#{new Integer(audioProperties['AudioFormat.sampleSizeInBits'])}" )
     private Integer sampleSize;
 
-    @Value("#{converterProperties['Converter.format']}")
+    @Value( "#{converterProperties['Converter.format']}" )
     private String format;
 
-    @Value("#{new Boolean(audioProperties['AudioFormat.signed'])}")
+    @Value( "#{new Boolean(audioProperties['AudioFormat.signed'])}" )
     private boolean signed;
 
-    @Value("#{new Boolean(audioProperties['AudioFormat.bigEndian'])}")
+    @Value( "#{new Boolean(audioProperties['AudioFormat.bigEndian'])}" )
     private boolean bigEndian;
 
     private String[] acceptableFormats;
 
     @PostConstruct
     public void init() {
-        try{
+        try {
             acceptableFormats = encoder().getSupportedDecodingFormats();
-        }   catch (EncoderException ee){
-            throw new RuntimeException(ee);
+        }
+        catch ( EncoderException ee ) {
+            throw new RuntimeException( ee );
         }
     }
 
-    public Runnable buildEncoder(File sourceFile, File targetFile, EncoderProgressListener encoderProgressListener){
-        return buildEncoder(sourceFile, targetFile, null, null, encoderProgressListener);
+    public Runnable buildEncoder( File sourceFile, File targetFile, EncoderProgressListener encoderProgressListener ) {
+        return buildEncoder( sourceFile, targetFile, null, null, encoderProgressListener );
     }
 
-    public Runnable buildEncoder(final File sourceFile, final File targetFile, Float offset, Float duration, final EncoderProgressListener encoderProgressListener){
+    public Runnable buildEncoder( final File sourceFile, final File targetFile, Float offset, Float duration, final EncoderProgressListener encoderProgressListener ) {
         final EncodingAttributes encodingAttributes = getEncodingAttributes();
-        encodingAttributes.setOffset(offset);
-        encodingAttributes.setDuration(duration);
-        encodingAttributes.setAudioAttributes(audioAttributes());
+        encodingAttributes.setOffset( offset );
+        encodingAttributes.setDuration( duration );
+        encodingAttributes.setAudioAttributes( audioAttributes() );
         return new Runnable() {
             public void run() {
-                try{
-                    encoder().encode(sourceFile, targetFile, encodingAttributes, encoderProgressListener,true);
-                } catch (InputFormatException ife){
+                try {
+                    encoder().encode( sourceFile, targetFile, encodingAttributes, encoderProgressListener, true );
+                }
+                catch ( InputFormatException ife ) {
                     ife.printStackTrace();
-                } catch (EncoderException ee){
+                }
+                catch ( EncoderException ee ) {
                     ee.printStackTrace();
                 }
             }
@@ -81,43 +76,45 @@ public class EncoderBuilder {
     }
 
     @Bean
-    public EncodingAttributes getEncodingAttributes(){
+    public EncodingAttributes getEncodingAttributes() {
         EncodingAttributes encodingAttributes = new EncodingAttributes();
-        encodingAttributes.setAudioAttributes(audioAttributes());
-        encodingAttributes.setFormat(format);
+        encodingAttributes.setAudioAttributes( audioAttributes() );
+        encodingAttributes.setFormat( format );
         return encodingAttributes;
     }
 
     @Bean
-    public Encoder encoder(){
-        return new Encoder(ffmpegLocator());
+    public Encoder encoder() {
+        return new Encoder( ffmpegLocator() );
     }
 
 
-    @Bean(name = "whoWhenFFMPegLocator")
-    public FFMPEGLocator ffmpegLocator(){
+    @Bean( name = "whoWhenFFMPegLocator" )
+    public FFMPEGLocator ffmpegLocator() {
         return new DefaultFFMPEGLocator();
     }
 
 
-    @Bean(name = "whoWhenAudioAttributes")
-    public AudioAttributes audioAttributes(){
+    @Bean( name = "whoWhenAudioAttributes" )
+    public AudioAttributes audioAttributes() {
         AudioAttributes audioAttributes = new AudioAttributes();
-        audioAttributes.setCodec(codec);
-        audioAttributes.setBitRate(getBitRate());
-        audioAttributes.setSamplingRate(samplingRate);
-        audioAttributes.setChannels(channels);
-        audioAttributes.setVolume(volume);
+        audioAttributes.setCodec( codec );
+        audioAttributes.setBitRate( getBitRate() );
+        audioAttributes.setSamplingRate( samplingRate );
+        audioAttributes.setChannels( channels );
+        audioAttributes.setVolume( volume );
         return audioAttributes;
     }
+
     public Integer getBitRate() {
-        return sampleSize*samplingRate;
+        return sampleSize * samplingRate;
     }
+
     public String getCodec() {
         return codec;
     }
 
-    public void setCodec(String codec) {
+    public void setCodec( String codec ) {
         this.codec = codec;
     }
 
@@ -125,7 +122,7 @@ public class EncoderBuilder {
         return samplingRate;
     }
 
-    public void setSamplingRate(Integer samplingRate) {
+    public void setSamplingRate( Integer samplingRate ) {
         this.samplingRate = samplingRate;
     }
 
@@ -133,7 +130,7 @@ public class EncoderBuilder {
         return channels;
     }
 
-    public void setChannels(Integer channels) {
+    public void setChannels( Integer channels ) {
         this.channels = channels;
     }
 
@@ -141,7 +138,7 @@ public class EncoderBuilder {
         return volume;
     }
 
-    public void setVolume(Integer volume) {
+    public void setVolume( Integer volume ) {
         this.volume = volume;
     }
 
@@ -149,7 +146,7 @@ public class EncoderBuilder {
         return sampleSize;
     }
 
-    public void setSampleSize(Integer sampleSize) {
+    public void setSampleSize( Integer sampleSize ) {
         this.sampleSize = sampleSize;
     }
 
@@ -157,7 +154,7 @@ public class EncoderBuilder {
         return format;
     }
 
-    public void setFormat(String format) {
+    public void setFormat( String format ) {
         this.format = format;
     }
 
@@ -165,7 +162,7 @@ public class EncoderBuilder {
         return signed;
     }
 
-    public void setSigned(boolean signed) {
+    public void setSigned( boolean signed ) {
         this.signed = signed;
     }
 
@@ -173,7 +170,7 @@ public class EncoderBuilder {
         return bigEndian;
     }
 
-    public void setBigEndian(boolean bigEndian) {
+    public void setBigEndian( boolean bigEndian ) {
         this.bigEndian = bigEndian;
     }
 
@@ -181,7 +178,7 @@ public class EncoderBuilder {
         return acceptableFormats;
     }
 
-    public void setAcceptableFormats(String[] acceptableFormats) {
+    public void setAcceptableFormats( String[] acceptableFormats ) {
         this.acceptableFormats = acceptableFormats;
     }
 }

@@ -6,7 +6,7 @@
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="465"/>
-        <property name="protocol" value="smtps" />
+        <property name="protocol" value="smtps"/>
         <property name="username" value="whowhen.piotrsukiennik@gmail.com"/>
         <property name="password" value="piotrsukiennik"/>
         <property name="javaMailProperties">
@@ -29,10 +29,10 @@
         </property>
     </bean>
 
-  <!--  <bean id="requestCompletionManager" class="iopiotrsukiennik.whowhen.backend.service.event.MailSenderProgressListener">
-        <property name="mailSender" ref="mailSender"/>
-        <property name="velocityEngine" ref="velocityEngine"/>
-        <property name="from" value="whowhen.piotrsukiennik@gmail.com"/>
-        <property name="subject" value="Your request has been completed"/>
-    </bean>-->
+    <!--  <bean id="requestCompletionManager" class="iopiotrsukiennik.whowhen.backend.service.event.MailSenderProgressListener">
+          <property name="mailSender" ref="mailSender"/>
+          <property name="velocityEngine" ref="velocityEngine"/>
+          <property name="from" value="whowhen.piotrsukiennik@gmail.com"/>
+          <property name="subject" value="Your request has been completed"/>
+      </bean>-->
 </beans>

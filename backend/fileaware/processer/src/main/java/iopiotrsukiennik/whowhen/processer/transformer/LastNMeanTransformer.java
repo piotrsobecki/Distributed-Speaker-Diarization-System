@@ -9,49 +9,48 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 25.10.12
- * Time: 23:25
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 public class LastNMeanTransformer extends AbstractFeatureVectorsTransformer {
 
     private MeanCalculator.MeanMethod meanMethod = MeanCalculator.MeanMethod.ARITHMETIC;
+
     private int howManyForMean;
-    private boolean doRepeatData=false;
 
-    public LastNMeanTransformer(){
+    private boolean doRepeatData = false;
+
+    public LastNMeanTransformer() {
 
     }
 
-    public LastNMeanTransformer(int howManyForMean) {
-        this(howManyForMean, MeanCalculator.MeanMethod.ARITHMETIC);
+    public LastNMeanTransformer( int howManyForMean ) {
+        this( howManyForMean, MeanCalculator.MeanMethod.ARITHMETIC );
     }
 
-    public LastNMeanTransformer(int howManyForMean, MeanCalculator.MeanMethod meanMethod) {
+    public LastNMeanTransformer( int howManyForMean, MeanCalculator.MeanMethod meanMethod ) {
         this.howManyForMean = howManyForMean;
         this.meanMethod = meanMethod;
 
     }
 
 
-    public synchronized List<double[]> transform(List<double[]> input) {
+    public synchronized List<double[]> transform( List<double[]> input ) {
 
         List<double[]> buffer = new ArrayList<double[]>();
-        for (int i=0; i<howManyForMean;i++){
-            buffer.add(new double[getColumnsTo()-getColumnsFrom()]);
+        for ( int i = 0; i < howManyForMean; i++ ) {
+            buffer.add( new double[getColumnsTo() - getColumnsFrom()] );
         }
-        int buffered=0;
+        int buffered = 0;
         List<double[]> outputList = new LinkedList<double[]>();
-        for(double[] inArr: input) {
-            buffer.set(buffered%howManyForMean, Arrays.copyOfRange(inArr,getColumnsFrom(),getColumnsTo()));
+        for ( double[] inArr : input ) {
+            buffer.set( buffered % howManyForMean, Arrays.copyOfRange( inArr, getColumnsFrom(), getColumnsTo() ) );
             buffered++;
-            if (doRepeatData){
-                outputList.add(MeanCalculator.calculateMean(buffer,meanMethod));
-            } else if(buffered>=howManyForMean){
-                outputList.add(MeanCalculator.calculateMean(buffer,meanMethod));
-                buffered=0;
+            if ( doRepeatData ) {
+                outputList.add( MeanCalculator.calculateMean( buffer, meanMethod ) );
+            }
+            else if ( buffered >= howManyForMean ) {
+                outputList.add( MeanCalculator.calculateMean( buffer, meanMethod ) );
+                buffered = 0;
             }
         }
         return outputList;
@@ -62,7 +61,7 @@ public class LastNMeanTransformer extends AbstractFeatureVectorsTransformer {
         return meanMethod;
     }
 
-    public void setMeanMethod(MeanCalculator.MeanMethod meanMethod) {
+    public void setMeanMethod( MeanCalculator.MeanMethod meanMethod ) {
         this.meanMethod = meanMethod;
     }
 
@@ -70,7 +69,7 @@ public class LastNMeanTransformer extends AbstractFeatureVectorsTransformer {
         return doRepeatData;
     }
 
-    public void setDoRepeatData(boolean doRepeatData) {
+    public void setDoRepeatData( boolean doRepeatData ) {
         this.doRepeatData = doRepeatData;
     }
 
@@ -78,7 +77,7 @@ public class LastNMeanTransformer extends AbstractFeatureVectorsTransformer {
         return howManyForMean;
     }
 
-    public void setHowManyForMean(int howManyForMean) {
+    public void setHowManyForMean( int howManyForMean ) {
         this.howManyForMean = howManyForMean;
     }
 }

@@ -13,9 +13,9 @@
     <artifactId>fileaware</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-     <modules>
-         <module>converter</module>
-         <module>splitter</module>
-         <module>processer</module>
-     </modules>
+    <modules>
+        <module>converter</module>
+        <module>splitter</module>
+        <module>processer</module>
+    </modules>
 </project>

@@ -28,76 +28,76 @@ import java.io.IOException;
  * executable bundled with the library distributions. It should work both for
  * windows and many linux distributions. If it doesn't, try compiling your own
  * ffmpeg executable and plug it in JAVE with a custom {@link FFMPEGLocator}.
- * 
+ *
  * @author Carlo Pelliccia
  */
 public class DefaultFFMPEGLocator extends FFMPEGLocator {
 
-	/**
-	 * Trace the version of the bundled ffmpeg executable. It's a counter: every
-	 * time the bundled ffmpeg change it is incremented by 1.
-	 */
-	private static final int myEXEversion = 1;
+    /**
+     * Trace the version of the bundled ffmpeg executable. It's a counter: every
+     * time the bundled ffmpeg change it is incremented by 1.
+     */
+    private static final int myEXEversion = 1;
 
-	/**
-	 * The ffmpeg executable file path.
-	 */
-	private String path;
+    /**
+     * The ffmpeg executable file path.
+     */
+    private String path;
 
-	/**
-	 * It builds the default FFMPEGLocator, exporting the ffmpeg executable on a
-	 * temp file.
-	 */
-	public DefaultFFMPEGLocator() {
-		// Windows?
-		String os = System.getProperty("os.name").toLowerCase();
-        boolean isWindows = os.contains("windows");
-		// Temp dir?
-		File temp = new File(System.getProperty("java.io.tmpdir"), "jave-"+ myEXEversion);
-		if (!temp.exists()) {
-			temp.mkdirs();
-			temp.deleteOnExit();
-		}
-		// ffmpeg executable export on disk.
-		String suffix = isWindows ? ".exe" : "";
-		File exe = new File(temp, "ffmpeg" + suffix);
-	    copyFile("ffmpeg" + suffix, exe);
-		if (isWindows) {
-			File dll = new File(temp, "pthreadGC2.dll");
-			copyFile("pthreadGC2.dll", dll);
-		} else {
-			Runtime runtime = Runtime.getRuntime();
-			try {
-				runtime.exec(new String[] { "/bin/chmod", "755",
-						exe.getAbsolutePath() });
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		// Ok.
-		this.path = exe.getAbsolutePath();
-	}
+    /**
+     * It builds the default FFMPEGLocator, exporting the ffmpeg executable on a
+     * temp file.
+     */
+    public DefaultFFMPEGLocator() {
+        // Windows?
+        String os = System.getProperty( "os.name" ).toLowerCase();
+        boolean isWindows = os.contains( "windows" );
+        // Temp dir?
+        File temp = new File( System.getProperty( "java.io.tmpdir" ), "jave-" + myEXEversion );
+        if ( !temp.exists() ) {
+            temp.mkdirs();
+            temp.deleteOnExit();
+        }
+        // ffmpeg executable export on disk.
+        String suffix = isWindows ? ".exe" : "";
+        File exe = new File( temp, "ffmpeg" + suffix );
+        copyFile( "ffmpeg" + suffix, exe );
+        if ( isWindows ) {
+            File dll = new File( temp, "pthreadGC2.dll" );
+            copyFile( "pthreadGC2.dll", dll );
+        }
+        else {
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec( new String[] { "/bin/chmod", "755",
+                 exe.getAbsolutePath() } );
+            }
+            catch ( IOException e ) {
+                e.printStackTrace();
+            }
+        }
+        // Ok.
+        this.path = exe.getAbsolutePath();
+    }
 
-	protected String getFFMPEGExecutablePath() {
-		return path;
-	}
+    protected String getFFMPEGExecutablePath() {
+        return path;
+    }
 
-	/**
-	 * Copies a file bundled in the package to the supplied destination.
-	 * 
-	 * @param path
-	 *            The name of the bundled file.
-	 * @param dest
-	 *            The destination.
-	 * @throws RuntimeException
-	 *             If aun unexpected error occurs.
-	 */
-	private void copyFile(String path, File dest) throws RuntimeException {
-		try {
-            FileUtils.copyInputStreamToFile(Thread.currentThread().getContextClassLoader().getResourceAsStream(path),dest);
-		} catch (IOException e) {
-			throw new RuntimeException("Cannot write file " + dest.getAbsolutePath());
-		}
-	}
+    /**
+     * Copies a file bundled in the package to the supplied destination.
+     *
+     * @param path The name of the bundled file.
+     * @param dest The destination.
+     * @throws RuntimeException If aun unexpected error occurs.
+     */
+    private void copyFile( String path, File dest ) throws RuntimeException {
+        try {
+            FileUtils.copyInputStreamToFile( Thread.currentThread().getContextClassLoader().getResourceAsStream( path ), dest );
+        }
+        catch ( IOException e ) {
+            throw new RuntimeException( "Cannot write file " + dest.getAbsolutePath() );
+        }
+    }
 
 }

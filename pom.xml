@@ -27,7 +27,9 @@
     </organization>
     <scm>
         <connection>scm:git:git://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System.git</connection>
-        <developerConnection>scm:git:https://piotrsukiennik@github.com/piotrsukiennik/Distributed-Speaker-Diarization-System.git</developerConnection>
+        <developerConnection>
+            scm:git:https://piotrsukiennik@github.com/piotrsukiennik/Distributed-Speaker-Diarization-System.git
+        </developerConnection>
         <url>https://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System</url>
     </scm>
     <ciManagement>

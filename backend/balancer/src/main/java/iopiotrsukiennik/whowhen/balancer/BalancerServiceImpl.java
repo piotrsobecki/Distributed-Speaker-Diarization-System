@@ -8,14 +8,9 @@ import iopiotrsukiennik.whowhen.backend.api.inner.splitter.SplitterRequest;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.*;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 09.11.12
- * Time: 00:15
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 
 @Component("balancerServiceImpl")
@@ -34,27 +29,27 @@ public class BalancerServiceImpl implements BalancerService {
     private SplitterBalancer splitterBalancer;
 
     @Override
-    public void handle(ClassificationRequest classificationRequest) {
-        classificationBalancer.handle(classificationRequest);
+    public void handle( ClassificationRequest classificationRequest ) {
+        classificationBalancer.handle( classificationRequest );
     }
 
     @Override
-    public void handle(ConvertionRequest convertionRequest) {
-        conversionBalancer.handle(convertionRequest);
+    public void handle( ConvertionRequest convertionRequest ) {
+        conversionBalancer.handle( convertionRequest );
     }
 
     @Override
     public String[] getAcceptableFormats() {
-       return conversionBalancer.getAcceptableFormats();
+        return conversionBalancer.getAcceptableFormats();
     }
 
     @Override
-    public void handle(ProcessingRequest processingRequest) {
-        processingBalancer.handle(processingRequest);
+    public void handle( ProcessingRequest processingRequest ) {
+        processingBalancer.handle( processingRequest );
     }
 
     @Override
-    public void handle(SplitterRequest splitterRequest) {
-       splitterBalancer.handle(splitterRequest);
+    public void handle( SplitterRequest splitterRequest ) {
+        splitterBalancer.handle( splitterRequest );
     }
 }

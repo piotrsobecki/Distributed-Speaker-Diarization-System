@@ -8,55 +8,56 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 21.10.12
- * Time: 23:44
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 public class SerializeOnChangeObserver implements Observer {
 
-    private String namePrefix="serialized";
+    private String namePrefix = "serialized";
+
     private IDataSerializer[] dataSerializers;
+
     private File serializersOutputDir;
 
 
-    public SerializeOnChangeObserver(File serializersOutputDir,IDataSerializer dataSerializer, IDataSerializer... dataSerializers) {
-        IDataSerializer[] serializers =null;
-        if(dataSerializers == null || dataSerializers.length==0){
+    public SerializeOnChangeObserver( File serializersOutputDir, IDataSerializer dataSerializer, IDataSerializer... dataSerializers ) {
+        IDataSerializer[] serializers = null;
+        if ( dataSerializers == null || dataSerializers.length == 0 ) {
             serializers = new IDataSerializer[1];
-        }else {
-            serializers = new IDataSerializer[dataSerializers.length+1];
-            System.arraycopy(dataSerializers,0,serializers,1,dataSerializers.length);
         }
-        serializers[0]= dataSerializer;
-        this.dataSerializers = dataSerializers;
-        this.serializersOutputDir = serializersOutputDir;
-    }
-    public SerializeOnChangeObserver(File serializersOutputDir, IDataSerializer[] dataSerializers) {
+        else {
+            serializers = new IDataSerializer[dataSerializers.length + 1];
+            System.arraycopy( dataSerializers, 0, serializers, 1, dataSerializers.length );
+        }
+        serializers[0] = dataSerializer;
         this.dataSerializers = dataSerializers;
         this.serializersOutputDir = serializersOutputDir;
     }
 
-    public void update(Observable o, Object arg) {
-        serializeObservable(o);
+    public SerializeOnChangeObserver( File serializersOutputDir, IDataSerializer[] dataSerializers ) {
+        this.dataSerializers = dataSerializers;
+        this.serializersOutputDir = serializersOutputDir;
     }
 
-    public void serializeObservable(Observable observable){
-        if (observable instanceof Serializable){
-            for (IDataSerializer dataSerializer: dataSerializers){
-                if (dataSerializer.supportsSerialization(observable.getClass())){
-                    dataSerializer.serialize((Serializable)observable,new File(serializersOutputDir, namePrefix+"."+dataSerializer.getExtension()));
+    public void update( Observable o, Object arg ) {
+        serializeObservable( o );
+    }
+
+    public void serializeObservable( Observable observable ) {
+        if ( observable instanceof Serializable ) {
+            for ( IDataSerializer dataSerializer : dataSerializers ) {
+                if ( dataSerializer.supportsSerialization( observable.getClass() ) ) {
+                    dataSerializer.serialize( (Serializable) observable, new File( serializersOutputDir, namePrefix + "." + dataSerializer.getExtension() ) );
                 }
             }
-        } else {
-            throw new ObservableNotSerializableException("Observable of class "+observable.getClass()+" is not serializable.");
+        }
+        else {
+            throw new ObservableNotSerializableException( "Observable of class " + observable.getClass() + " is not serializable." );
         }
     }
 
-    protected class ObservableNotSerializableException extends RuntimeException{
-        public ObservableNotSerializableException(String message) {
-            super(message);
+    protected class ObservableNotSerializableException extends RuntimeException {
+        public ObservableNotSerializableException( String message ) {
+            super( message );
         }
     }
 
@@ -64,7 +65,7 @@ public class SerializeOnChangeObserver implements Observer {
         return namePrefix;
     }
 
-    public void setNamePrefix(String namePrefix) {
+    public void setNamePrefix( String namePrefix ) {
         this.namePrefix = namePrefix;
     }
 }

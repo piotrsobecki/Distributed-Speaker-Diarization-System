@@ -7,8 +7,6 @@ import java.util.Collections;
 
 /**
  * @author: Piotr Sukiennik
- * @date: 09.01.14
- * @time: 17:38
  */
 public class ProgressNotifierImpl implements ProgressNotifier {
 
@@ -16,16 +14,16 @@ public class ProgressNotifierImpl implements ProgressNotifier {
 
 
     @Override
-    public void notifyAll(int progress, String requestIdentifier) {
-        for (ProgressListener progressListener: progressListeners){
-            progressListener.notify(progress,requestIdentifier);
+    public void notifyAll( int progress, String requestIdentifier ) {
+        for ( ProgressListener progressListener : progressListeners ) {
+            progressListener.notify( progress, requestIdentifier );
         }
     }
 
     @Override
-    public void notifyAll(int progress, String requestIdentifier, RequestData request) {
-        for (ProgressListener progressListener: progressListeners){
-            progressListener.notify(progress,requestIdentifier,request);
+    public void notifyAll( int progress, String requestIdentifier, RequestData request ) {
+        for ( ProgressListener progressListener : progressListeners ) {
+            progressListener.notify( progress, requestIdentifier, request );
         }
     }
 
@@ -33,7 +31,7 @@ public class ProgressNotifierImpl implements ProgressNotifier {
         return progressListeners;
     }
 
-    public void setProgressListeners(Collection<ProgressListener> progressListeners) {
+    public void setProgressListeners( Collection<ProgressListener> progressListeners ) {
         this.progressListeners = progressListeners;
     }
 }

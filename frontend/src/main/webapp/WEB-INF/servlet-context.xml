@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:util="http://www.springframework.org/schema/util"
-    xsi:schemaLocation="http://www.springframework.org/schema/mvc
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -14,24 +14,23 @@
        http://www.springframework.org/schema/util/spring-util-3.1.xsd
        ">
 
-    <mvc:resources mapping="/resources/**" location="/resources/" />
-    <context:component-scan base-package="iopiotrsukiennik" />
-	<mvc:annotation-driven />
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <context:component-scan base-package="iopiotrsukiennik"/>
+    <mvc:annotation-driven/>
 
-    <util:properties id="requestProperties" location="/WEB-INF/properties/request.properties" />
-    <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties" />
+    <util:properties id="requestProperties" location="/WEB-INF/properties/request.properties"/>
+    <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties"/>
 
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:messages" />
+        <property name="basename" value="classpath:messages"/>
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
 
-
-    <bean id="maxUploadFileSize" class="java.lang.String" >
+    <bean id="maxUploadFileSize" class="java.lang.String">
         <constructor-arg type="java.lang.String" value="#{requestProperties['maxFileSize']}"/>
-        
+
     </bean>
 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
@@ -46,15 +45,15 @@
 
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-            <property name="paramName" value="lang" />
+            <property name="paramName" value="lang"/>
         </bean>
     </mvc:interceptors>
     <bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
         <property name="exposeContextBeansAsAttributes" value="true"/>
-	</bean>
+    </bean>
 
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">

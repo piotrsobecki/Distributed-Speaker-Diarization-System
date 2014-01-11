@@ -4,16 +4,12 @@ import java.io.Serializable;
 import java.util.Observable;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 03.11.12
- * Time: 21:25
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
-public class ProgressObservable extends Observable implements IProgress,Serializable{
+public class ProgressObservable extends Observable implements IProgress, Serializable {
     private Progress progress;
 
-    public ProgressObservable(Progress progress) {
+    public ProgressObservable( Progress progress ) {
         this.progress = progress;
     }
 
@@ -21,8 +17,8 @@ public class ProgressObservable extends Observable implements IProgress,Serializ
         return progress.getStatus();
     }
 
-    public void setStatus(String status) {
-        this.progress.setStatus(status);
+    public void setStatus( String status ) {
+        this.progress.setStatus( status );
         this.setChanged();
         this.notifyObservers();
     }
@@ -31,8 +27,8 @@ public class ProgressObservable extends Observable implements IProgress,Serializ
         return progress.getProgress();
     }
 
-    public void setProgress(float progress) {
-        this.progress.setProgress(progress);
+    public void setProgress( float progress ) {
+        this.progress.setProgress( progress );
         this.setChanged();
         this.notifyObservers();
     }

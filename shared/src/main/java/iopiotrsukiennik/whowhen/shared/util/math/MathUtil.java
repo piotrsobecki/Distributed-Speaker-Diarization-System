@@ -1,25 +1,21 @@
 package iopiotrsukiennik.whowhen.shared.util.math;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 10.11.12
- * Time: 23:37
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
 public class MathUtil {
-    public static double euclidianDistance(double[] doubles1, double[] doubles2){
+    public static double euclidianDistance( double[] doubles1, double[] doubles2 ) {
         double result = 0;
-        for (int i=0; i<doubles1.length;i++){
-            result+=Math.pow(doubles1[i]-doubles2[i],2);
+        for ( int i = 0; i < doubles1.length; i++ ) {
+            result += Math.pow( doubles1[i] - doubles2[i], 2 );
         }
-        return Math.sqrt(result);
+        return Math.sqrt( result );
     }
 
-    public static double[] sub(double[] dArr1, double[] dArr2){
+    public static double[] sub( double[] dArr1, double[] dArr2 ) {
         double[] result = new double[dArr1.length];
-        for (int i=0; i<dArr1.length;i++){
-            result[i]=dArr1[i]-dArr2[i];
+        for ( int i = 0; i < dArr1.length; i++ ) {
+            result[i] = dArr1[i] - dArr2[i];
         }
         return result;
     }

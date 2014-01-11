@@ -1,7 +1,6 @@
 package iopiotrsukiennik.whowhen.web.controller;
 
 import iopiotrsukiennik.whowhen.backend.api.outer.BackendRequest;
-import iopiotrsukiennik.whowhen.backend.api.outer.BackendResponse;
 import iopiotrsukiennik.whowhen.backend.api.outer.IBackendService;
 import iopiotrsukiennik.whowhen.shared.form.WhoWhenRequestForm;
 import iopiotrsukiennik.whowhen.web.util.RequestValidator;
@@ -18,11 +17,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 @Controller
-public class DataSubmitController  {
-    @Value("#{serviceProperties['frontend.apacheDeploymentPath']}")
+public class DataSubmitController {
+    @Value( "#{serviceProperties['frontend.apacheDeploymentPath']}" )
     private String apacheDeploymentPath;
 
-    @Value("#{requestProperties['maxFileSize']}")
+    @Value( "#{requestProperties['maxFileSize']}" )
     private String maxFileSize;
 
     public static final String TARGET_DATA_FILE_NAME = "file";
@@ -30,37 +29,37 @@ public class DataSubmitController  {
     @Resource
     private IBackendService backendService;
 
-    @RequestMapping(value="/",method = RequestMethod.POST)
+    @RequestMapping( value = "/", method = RequestMethod.POST )
     public String indexPOST(
-            @ModelAttribute(value="FORM") WhoWhenRequestForm form,
-            @RequestParam(value = "redirect",required = true) String redirect,
+     @ModelAttribute( value = "FORM" ) WhoWhenRequestForm form,
+     @RequestParam( value = "redirect", required = true ) String redirect,
 
-            BindingResult result)
-    {
+     BindingResult result ) {
         RequestValidator requestValidator = new RequestValidator();
-        requestValidator.validate(form,result);
+        requestValidator.validate( form, result );
 
-        if(!result.hasErrors() && form.getFile().getSize() < Long.valueOf(maxFileSize)){
+        if ( !result.hasErrors() && form.getFile().getSize() < Long.valueOf( maxFileSize ) ) {
             FileOutputStream outputStream = null;
             try {
-                String requestIdentifier=generateRequestIdentifier();
+                String requestIdentifier = generateRequestIdentifier();
                 //System.out.println("1");
-                byte[] fileBytes =form.getFile().getFileItem().get();
-                String targetDir = apacheDeploymentPath+requestIdentifier+File.separator;
-                String filePath =  targetDir+ TARGET_DATA_FILE_NAME;
-                File targetFile = new File(filePath);
-               // System.out.println("2");
-                if (!targetFile.exists()){
+                byte[] fileBytes = form.getFile().getFileItem().get();
+                String targetDir = apacheDeploymentPath + requestIdentifier + File.separator;
+                String filePath = targetDir + TARGET_DATA_FILE_NAME;
+                File targetFile = new File( filePath );
+                // System.out.println("2");
+                if ( !targetFile.exists() ) {
                     targetFile.getParentFile().mkdirs();
-                    outputStream = new FileOutputStream(targetFile);
-                    outputStream.write(fileBytes);
+                    outputStream = new FileOutputStream( targetFile );
+                    outputStream.write( fileBytes );
                     outputStream.close();
                 }
-                BackendRequest backendRequest = new BackendRequest(requestIdentifier,FormUtil.toRequestData(form),targetFile);
-                backendService.handle(backendRequest);
-                return "redirect:"+redirect+backendRequest.getRequestIdentifier()+"/request";
+                BackendRequest backendRequest = new BackendRequest( requestIdentifier, FormUtil.toRequestData( form ), targetFile );
+                backendService.handle( backendRequest );
+                return "redirect:" + redirect + backendRequest.getRequestIdentifier() + "/request";
 
-            } catch (Exception e) {
+            }
+            catch ( Exception e ) {
                 e.printStackTrace();
 
             }
@@ -68,7 +67,7 @@ public class DataSubmitController  {
         return "redirect:/?error=true";
     }
 
-    protected String generateRequestIdentifier(){
+    protected String generateRequestIdentifier() {
         return java.util.UUID.randomUUID().toString();
     }
 

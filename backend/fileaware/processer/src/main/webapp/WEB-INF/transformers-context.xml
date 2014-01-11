@@ -9,10 +9,10 @@
                 <!--<bean class="iopiotrsukiennik.whowhen.processer.transformer.CepstralMeanNormalizationTransformer">
                     <property name="meanMethod" value="ARITHMETIC"/>
                 </bean>-->
-         <!--       <bean class="iopiotrsukiennik.whowhen.processer.transformer.MeanTransformer">
-                    <property name="meanMethod" value="ARITHMETIC"/>
-                </bean>
--->
+                <!--       <bean class="iopiotrsukiennik.whowhen.processer.transformer.MeanTransformer">
+                           <property name="meanMethod" value="ARITHMETIC"/>
+                       </bean>
+       -->
                 <bean class="iopiotrsukiennik.whowhen.processer.transformer.LastNMeanTransformer">
                     <property name="howManyForMean" value="5"/>
                     <property name="doRepeatData" value="false"/>

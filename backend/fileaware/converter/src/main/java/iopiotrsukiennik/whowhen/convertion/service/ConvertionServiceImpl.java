@@ -1,9 +1,9 @@
 package iopiotrsukiennik.whowhen.convertion.service;
 
-import iopiotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionService;
-import iopiotrsukiennik.whowhen.backend.api.inner.util.AudioInfo;
 import iopiotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionRequest;
 import iopiotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionResponse;
+import iopiotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionService;
+import iopiotrsukiennik.whowhen.backend.api.inner.util.AudioInfo;
 import iopiotrsukiennik.whowhen.backend.api.outer.IBackendService;
 import iopiotrsukiennik.whowhen.convertion.ProgressObservableEncoderProgressListener;
 import iopiotrsukiennik.whowhen.convertion.configuration.EncoderBuilder;
@@ -26,18 +26,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Piotr
- * Date: 09.11.12
- * Time: 01:21
- * To change this template use File | Settings | File Templates.
+ * @author Piotr Sukiennik
  */
-@Component("convertionServiceImpl")
+@Component( "convertionServiceImpl" )
 public class ConvertionServiceImpl implements ConvertionService {
 
-    private static Log log = LogFactory.getLog(ConvertionServiceImpl.class);
+    private static Log log = LogFactory.getLog( ConvertionServiceImpl.class );
 
-    private ExecutorService executorService= Executors.newFixedThreadPool(4);
+    private ExecutorService executorService = Executors.newFixedThreadPool( 4 );
 
     @Resource
     private EncoderBuilder encoderBuilder;
@@ -49,61 +45,65 @@ public class ConvertionServiceImpl implements ConvertionService {
     private IBackendService backendService;
 
     @Override
-    public void handle(final ConvertionRequest convertionRequest) {
-        try{
-            final File convertedFile=new File(convertionRequest.getFileToConvert().getParentFile(),"converted_"+convertionRequest.getFileToConvert().getName()+".wav");
-            ProgressObservableEncoderProgressListener progressListener = new ProgressObservableEncoderProgressListener(new Progress());
-            SerializeOnChangeObserver serializeOnChangeObserver = new SerializeOnChangeObserver(convertionRequest.getFileToConvert().getParentFile(),new JSONDataSerializer());
-            serializeOnChangeObserver.setNamePrefix("convertionProgress");
-            progressListener.addObserver(serializeOnChangeObserver);
-            progressListener.addObserver(new ProgressObservableCompletionListener() {
+    public void handle( final ConvertionRequest convertionRequest ) {
+        try {
+            final File convertedFile = new File( convertionRequest.getFileToConvert().getParentFile(), "converted_" + convertionRequest.getFileToConvert().getName() + ".wav" );
+            ProgressObservableEncoderProgressListener progressListener = new ProgressObservableEncoderProgressListener( new Progress() );
+            SerializeOnChangeObserver serializeOnChangeObserver = new SerializeOnChangeObserver( convertionRequest.getFileToConvert().getParentFile(), new JSONDataSerializer() );
+            serializeOnChangeObserver.setNamePrefix( "convertionProgress" );
+            progressListener.addObserver( serializeOnChangeObserver );
+            progressListener.addObserver( new ProgressObservableCompletionListener() {
                 @Override
-                protected void complete(ProgressObservable observable, Object arg) {
-                    try{
-                        MultimediaInfo multimediaInfo = encoder.getInfo(convertedFile);
-                        ConvertionResponse convertionResponse =  new ConvertionResponse(convertionRequest.getRequestIdentifier(), map(convertedFile, multimediaInfo, encoderBuilder.isSigned(), encoderBuilder.isBigEndian()));
-                        backendService.notify(convertionResponse);
-                    }catch (Exception e){
-                        if (log.isErrorEnabled()){
-                            log.error(ExceptionUtils.getStackTrace(e));
+                protected void complete( ProgressObservable observable, Object arg ) {
+                    try {
+                        MultimediaInfo multimediaInfo = encoder.getInfo( convertedFile );
+                        ConvertionResponse convertionResponse = new ConvertionResponse( convertionRequest.getRequestIdentifier(), map( convertedFile, multimediaInfo, encoderBuilder.isSigned(), encoderBuilder.isBigEndian() ) );
+                        backendService.notify( convertionResponse );
+                    }
+                    catch ( Exception e ) {
+                        if ( log.isErrorEnabled() ) {
+                            log.error( ExceptionUtils.getStackTrace( e ) );
                         }
                     }
                 }
+
                 @Override
-                protected boolean isCompleted(ProgressObservable observable, Object arg) {
-                    return observable.getProgress()>=100;
+                protected boolean isCompleted( ProgressObservable observable, Object arg ) {
+                    return observable.getProgress() >= 100;
                 }
-            });
-            executorService.submit(encoderBuilder.buildEncoder(convertionRequest.getFileToConvert(), convertedFile, progressListener));
-        }catch (Exception e){
-            if (log.isErrorEnabled()){
-                log.error(ExceptionUtils.getStackTrace(e));
+            } );
+            executorService.submit( encoderBuilder.buildEncoder( convertionRequest.getFileToConvert(), convertedFile, progressListener ) );
+        }
+        catch ( Exception e ) {
+            if ( log.isErrorEnabled() ) {
+                log.error( ExceptionUtils.getStackTrace( e ) );
             }
         }
     }
 
     @Override
     public String[] getAcceptableFormats() {
-        try{
+        try {
             return encoder.getSupportedDecodingFormats();
-        }catch (EncoderException e){
-            return new String[]{};
+        }
+        catch ( EncoderException e ) {
+            return new String[] { };
         }
     }
 
-    public static AudioInfo map(File audioFile, MultimediaInfo multimediaInfo,boolean signed, boolean bigEndian){
-        AudioInfo audioInfo = new AudioInfo(audioFile);
-        audioInfo.setChannels(multimediaInfo.getAudio().getChannels());
-        audioInfo.setDuration(multimediaInfo.getDuration());
-        audioInfo.setSampleRate(multimediaInfo.getAudio().getSamplingRate());
-        if (log.isErrorEnabled()){
-            log.info("multimediaInfo.getAudio().getBitRate()"+ multimediaInfo.getAudio().getBitRate());
-            log.info("multimediaInfo.getAudio().getSamplingRate()"+ multimediaInfo.getAudio().getSamplingRate());
-            log.info("setSampleSizeInBits("+(multimediaInfo.getAudio().getBitRate()*1000)/multimediaInfo.getAudio().getSamplingRate()+")");
+    public static AudioInfo map( File audioFile, MultimediaInfo multimediaInfo, boolean signed, boolean bigEndian ) {
+        AudioInfo audioInfo = new AudioInfo( audioFile );
+        audioInfo.setChannels( multimediaInfo.getAudio().getChannels() );
+        audioInfo.setDuration( multimediaInfo.getDuration() );
+        audioInfo.setSampleRate( multimediaInfo.getAudio().getSamplingRate() );
+        if ( log.isErrorEnabled() ) {
+            log.info( "multimediaInfo.getAudio().getBitRate()" + multimediaInfo.getAudio().getBitRate() );
+            log.info( "multimediaInfo.getAudio().getSamplingRate()" + multimediaInfo.getAudio().getSamplingRate() );
+            log.info( "setSampleSizeInBits(" + ( multimediaInfo.getAudio().getBitRate() * 1000 ) / multimediaInfo.getAudio().getSamplingRate() + ")" );
         }
-        audioInfo.setSampleSizeInBits((multimediaInfo.getAudio().getBitRate()*1000)/multimediaInfo.getAudio().getSamplingRate());
-        audioInfo.setSigned(signed);
-        audioInfo.setBigEndian(bigEndian);
+        audioInfo.setSampleSizeInBits( ( multimediaInfo.getAudio().getBitRate() * 1000 ) / multimediaInfo.getAudio().getSamplingRate() );
+        audioInfo.setSigned( signed );
+        audioInfo.setBigEndian( bigEndian );
         return audioInfo;
     }
 

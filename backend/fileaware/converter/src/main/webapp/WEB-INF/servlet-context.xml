@@ -10,13 +10,13 @@
         http://www.springframework.org/schema/util/spring-util-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
 
-    <context:component-scan base-package="iopiotrsukiennik" />
+    <context:component-scan base-package="iopiotrsukiennik"/>
     <mvc:annotation-driven/>
 
-    <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties" />
-    <util:properties id="converterProperties" location="/WEB-INF/properties/converter.properties" />
-    <util:properties id="audioProperties" location="/WEB-INF/properties/audio.properties" />
-    <util:properties id="concurrencyProperties" location="/WEB-INF/properties/concurrency.properties" />
+    <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties"/>
+    <util:properties id="converterProperties" location="/WEB-INF/properties/converter.properties"/>
+    <util:properties id="audioProperties" location="/WEB-INF/properties/audio.properties"/>
+    <util:properties id="concurrencyProperties" location="/WEB-INF/properties/concurrency.properties"/>
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
         <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
@@ -24,7 +24,8 @@
     </bean>
 
     <bean id="convertionService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionService"/>
+        <property name="serviceInterface"
+                  value="iopiotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionService"/>
         <property name="service" ref="convertionServiceImpl"/>
     </bean>
 

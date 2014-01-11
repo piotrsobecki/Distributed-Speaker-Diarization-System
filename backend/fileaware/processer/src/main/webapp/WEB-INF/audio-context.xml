@@ -5,7 +5,8 @@
 
 
     <bean id="mffcc" class="iopiotrsukiennik.whowhen.processer.mfcc.MFCCBuilder">
-        <constructor-arg index="0" value="16000"/><!--sampleRate-->
+        <constructor-arg index="0" value="16000"/>
+        <!--sampleRate-->
         <constructor-arg index="1" value="512"/>
         <constructor-arg index="2" value="12"/>
         <constructor-arg index="3" value="false"/>
@@ -15,7 +16,8 @@
     </bean>
 
     <bean id="audioFormat" class="javax.sound.sampled.AudioFormat">
-        <constructor-arg index="0" value="16000"/><!--sampleRate-->
+        <constructor-arg index="0" value="16000"/>
+        <!--sampleRate-->
         <constructor-arg index="1" value="16"/>
         <constructor-arg index="2" value="1"/>
         <constructor-arg index="3" value="true"/>

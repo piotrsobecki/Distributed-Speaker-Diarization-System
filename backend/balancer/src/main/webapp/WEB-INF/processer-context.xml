@@ -6,12 +6,13 @@
         http://www.springframework.org/schema/util/spring-util-3.1.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <util:properties id="processerProperties" location="/WEB-INF/properties/processer-services.properties" />
+    <util:properties id="processerProperties" location="/WEB-INF/properties/processer-services.properties"/>
     <bean id="processerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="iopiotrsukiennik.whowhen.backend.api.inner.processing.ProcessingService"/>
+        <property name="serviceInterface"
+                  value="iopiotrsukiennik.whowhen.backend.api.inner.processing.ProcessingService"/>
         <property name="serviceUrl" value="#{processerProperties['processer.url']}/processer.service"/>
     </bean>
-     <util:list id="processers">
-         <ref bean="processerService"/>
-     </util:list>
+    <util:list id="processers">
+        <ref bean="processerService"/>
+    </util:list>
 </beans>
