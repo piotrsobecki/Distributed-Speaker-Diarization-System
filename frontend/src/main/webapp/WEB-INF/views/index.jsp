@@ -15,9 +15,7 @@
 <mytags:bootstrap-nav/>
 <mytags:bootstrap-intro-header/>
 
-<%--http://data.${domainPath}/?redirect=http://${servletPath}--%>
-
-<form:form commandName="FORM" id="whoWhenRequestForm" enctype="multipart/form-data" action="http://localhost:8280/datasubmit/?redirect=http://${servletPath}" method="POST">
+<form:form commandName="FORM" id="whoWhenRequestForm" enctype="multipart/form-data" action="http://data.${domainPath}/?redirect=http://${servletPath}" method="POST">
 
     <div class="content-section-a">
         <div class="container">
