@@ -19,22 +19,16 @@ public class FrontController {
     @Resource( name = "backendService" )
     private IBackendService backendService;
 
-    @RequestMapping( value = "/**/favicon.ico" )
-    public String faviconGet() {
-        return "forward:/resources/ficon.ico";
-    }
-
     @RequestMapping( value = "/", method = RequestMethod.GET )
     public String indexGet() {
         return "index";
     }
 
-    @RequestMapping( value = "/", method = RequestMethod.GET, params = "error=true" )
-    public String indexGetError( Map model ) {
-        model.put( "error", true );
+    @RequestMapping( value = "/", method = RequestMethod.GET, params = "error=true")
+    public String indexGetError(Map<String,Object> model ) {
+        model.put( "error",true );
         return "index";
     }
-
     @ModelAttribute( "domainPath" )
     public String getDomainPath( HttpServletRequest request ) {
         return HttpUtil.getDomainPath( request );

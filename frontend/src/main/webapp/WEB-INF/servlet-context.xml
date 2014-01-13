@@ -44,16 +44,17 @@
     </bean>
 
     <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>
         </bean>
     </mvc:interceptors>
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
         <property name="exposeContextBeansAsAttributes" value="true"/>
     </bean>
+
 
 
     <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">

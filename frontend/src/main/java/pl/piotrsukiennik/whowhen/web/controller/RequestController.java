@@ -21,7 +21,7 @@ public class RequestController {
     public String indexGet( @PathVariable( value = "requestId" ) String requestIdentifier, Map<String, String> model ) {
         if ( getProgress( requestIdentifier ) != null ) {
             model.put( "requestIdentifier", "" + requestIdentifier );
-            return "request";
+            return "results";
         }
         else {
             return "redirect:/";
