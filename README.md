@@ -4,6 +4,12 @@ Distributed Speaker Diarization System
 PJIIT Engineer's Thesis
 ---------------------------------------
 
+Working application: http://whowhen.piotrsukiennik.pl
+
+Continuous Integration: http://jenkins.piotrsukiennik.pl
+Sonar: http://sonar.piotrsukiennik.pl
+Redmine: http://redmine.piotrsukiennik.pl
+
 
 Speaker diarization is a problem in computer science of segmenting the recorded speech into fragments corresponding to speakers that were present in that recording.
 
