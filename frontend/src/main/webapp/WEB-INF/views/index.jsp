@@ -48,12 +48,12 @@
             </div>
         </div>
         <div class="row">
-
             <div class="col-lg-12 col-sm-12">
                 <div>
-                    <a class='btn btn-primary col-lg-2 col-sm-2' href='javascript:;'>
-
-                        <span id="upload-file-info"><spring:message code="front.step1.choosefile"/>.</span>
+                    <a class="btn btn-primary col-lg-2 col-sm-2" href="javascript:;">
+                        <span id="upload-file-info">
+                            <spring:message code="front.step1.choosefile"/>
+                        </span>
                         <input id="file" name="file" type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html(getFileName($(this).val()));'>
                     </a>
                 </div>
@@ -108,9 +108,7 @@
     </div><!-- /.container -->
 </div><!-- /.content-section-a Email -->
 <div class="content-section-a">
-
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <hr class="section-heading-spacer">
@@ -122,13 +120,11 @@
                     <spring:message code="front.step4.text"/>
                 </p>
             </div>
-            <div class="col-lg-12 col-sm-12">
-                <button  onclick="$('#whoWhenRequestForm').submit()" type="button" class="btn btn-lg btn-primary"><spring:message code="front.step4.submit"/></button>
-            </div>
         </div>
-
+        <div class="row">
+            <button  onclick="$('#whoWhenRequestForm').submit()" type="button" class="btn btn-lg btn-primary col-lg-12 col-sm-12"><spring:message code="front.step4.submit"/></button>
+        </div>
     </div><!-- /.container -->
-
 </div><!-- /.content-section-a Submit-->
 </form:form>
 <mytags:bootstrap-footer/>
