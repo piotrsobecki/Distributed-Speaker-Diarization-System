@@ -7,13 +7,19 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <util:properties id="classifierProperties" location="/WEB-INF/properties/classifier-services.properties"/>
-    <bean id="classifierService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface"
-                  value="pl.piotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
-        <property name="serviceUrl" value="#{classifierProperties['classifier.url']}/classifier.service"/>
-    </bean>
 
     <util:list id="classifiers">
         <ref bean="classifierService"/>
     </util:list>
+
+    <bean id="classifierService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.classifierService"/>
+            </bean>
+        </property>
+    </bean>
+
 </beans>

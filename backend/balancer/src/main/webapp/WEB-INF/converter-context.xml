@@ -5,15 +5,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-3.1.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <util:properties id="converterProperties" location="/WEB-INF/properties/converter-services.properties"/>
-    <bean id="converterService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface"
-                  value="pl.piotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionService"/>
-        <property name="serviceUrl" value="#{converterProperties['converter.url']}/converter.service"/>
-    </bean>
-
     <util:list id="converters">
         <ref bean="converterService"/>
     </util:list>
+    <util:properties id="converterProperties" location="/WEB-INF/properties/converter-services.properties"/>
+
+
+    <bean id="converterService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.convertion.ConvertionService"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.converterService"/>
+            </bean>
+        </property>
+    </bean>
+
 </beans>

@@ -7,9 +7,15 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <util:properties id="splitterProperties" location="/WEB-INF/properties/splitter-services.properties"/>
-    <bean id="splitterService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+
+    <bean id="splitterService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.splitter.SplitterService"/>
-        <property name="serviceUrl" value="#{splitterProperties['splitter.url']}/splitter.service"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.splitterService"/>
+            </bean>
+        </property>
     </bean>
     <util:list id="splitters">
         <ref bean="splitterService"/>

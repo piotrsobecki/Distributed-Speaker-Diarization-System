@@ -42,6 +42,7 @@
     </issueManagement>
     <inceptionYear>2013</inceptionYear>
     <properties>
+        <activemq.version>5.7.0</activemq.version>
         <war.output.dir>target</war.output.dir>
         <spring-version>3.1.0.RELEASE</spring-version>
         <hibernate.version>3.5.6-Final</hibernate.version>

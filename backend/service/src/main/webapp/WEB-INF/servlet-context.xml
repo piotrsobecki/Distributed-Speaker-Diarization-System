@@ -24,23 +24,37 @@
 
     <bean id="progressNotifier" class="pl.piotrsukiennik.whowhen.shared.event.ProgressNotifierImpl"/>
 
-    <bean id="balancerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <bean id="balancerService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
-        <property name="serviceUrl" value="#{serviceProperties['balancer.url']}/balancer.service"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.balancerService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://amq.lan:61616"/>
     </bean>
 
 
-    <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+    <bean id="backendService" class="org.springframework.jms.remoting.JmsInvokerServiceExporter">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
         <property name="service" ref="backendServiceImpl"/>
     </bean>
 
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <value>
-                /backend.service=backendService
-            </value>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.backendService"/>
+            </bean>
         </property>
+        <property name="concurrentConsumers" value="3"/>
+        <property name="messageListener" ref="backendService"/>
     </bean>
+
+
 
 </beans>

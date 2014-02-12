@@ -14,21 +14,35 @@
     <import resource="classifier-context.xml"/>
     <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties"/>
 
-
-    <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
-        <property name="serviceUrl" value="#{serviceProperties['backend.url']}/backend.service"/>
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://amq.lan:61616"/>
     </bean>
 
-    <bean id="classificationService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
-        <property name="serviceInterface"
-                  value="pl.piotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
+    <bean id="backendService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.backendService"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="WhoWhen.classifierService"/>
+    </bean>
+
+
+    <bean id="classifierService" class="org.springframework.jms.remoting.JmsInvokerServiceExporter">
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.classification.ClassificationService"/>
         <property name="service" ref="classificationServiceImpl"/>
     </bean>
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <value>/classifier.service=classificationService</value>
-        </property>
+
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="queue"/>
+        <property name="concurrentConsumers" value="3"/>
+        <property name="messageListener" ref="classifierService"/>
     </bean>
 
 </beans>

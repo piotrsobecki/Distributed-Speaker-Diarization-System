@@ -23,23 +23,34 @@
     <util:properties id="serviceProperties" location="/WEB-INF/properties/service.properties"/>
 
 
-    <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <bean id="backendService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
-        <property name="serviceUrl" value="#{serviceProperties['backend.url']}/backend.service"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.backendService"/>
+            </bean>
+        </property>
     </bean>
 
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://amq.lan:61616"/>
+    </bean>
 
-    <bean id="splitterService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+    <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="WhoWhen.splitterService"/>
+    </bean>
+
+    <bean id="splitterService" class="org.springframework.jms.remoting.JmsInvokerServiceExporter">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.splitter.SplitterService"/>
         <property name="service" ref="splitterServiceImpl"/>
     </bean>
 
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <value>
-                /splitter.service=splitterService
-            </value>
-        </property>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="queue"/>
+        <property name="concurrentConsumers" value="3"/>
+        <property name="messageListener" ref="splitterService"/>
     </bean>
 
 </beans>

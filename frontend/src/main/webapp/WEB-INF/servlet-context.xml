@@ -56,18 +56,18 @@
     </bean>
 
 
-
-    <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
-        <property name="serviceUrl" value="#{serviceProperties['backend.url']}/backend.service"/>
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://amq.lan:61616"/>
     </bean>
 
-    <!--
-        RMI
-    <bean id="backendService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+    <bean id="backendService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
-        <property name="serviceUrl" value="#{serviceProperties['backend.url.rmi']}"/>
-    </bean>-->
-
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.backendService"/>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

@@ -19,17 +19,20 @@
     <util:properties id="concurrencyProperties" location="/WEB-INF/properties/concurrency.properties"/>
 
 
-    <bean id="balancerService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+    <bean id="balancerService" class="org.springframework.jms.remoting.JmsInvokerServiceExporter">
         <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.balancer.BalancerService"/>
         <property name="service" ref="balancerServiceImpl"/>
     </bean>
 
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <value>
-                /balancer.service=balancerService
-            </value>
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.balancerService"/>
+            </bean>
         </property>
+        <property name="concurrentConsumers" value="3"/>
+        <property name="messageListener" ref="balancerService"/>
     </bean>
 
 

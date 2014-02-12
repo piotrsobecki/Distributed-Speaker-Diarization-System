@@ -31,10 +31,21 @@
     </bean>
 
 
-    <bean id="backendService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
-        <property name="serviceUrl" value="#{serviceProperties['backend.url']}/backend.service"/>
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://amq.lan:61616"/>
     </bean>
+
+    <bean id="backendService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.backendService"/>
+            </bean>
+        </property>
+    </bean>
+
+
 
     <!-- <bean id="backendService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
          <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.outer.IBackendService"/>

@@ -7,11 +7,17 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <util:properties id="processerProperties" location="/WEB-INF/properties/processer-services.properties"/>
-    <bean id="processerService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-        <property name="serviceInterface"
-                  value="pl.piotrsukiennik.whowhen.backend.api.inner.processing.ProcessingService"/>
-        <property name="serviceUrl" value="#{processerProperties['processer.url']}/processer.service"/>
+
+    <bean id="processerService" class="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean">
+        <property name="serviceInterface" value="pl.piotrsukiennik.whowhen.backend.api.inner.processing.ProcessingService"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="queue">
+            <bean class="org.apache.activemq.command.ActiveMQQueue">
+                <constructor-arg value="WhoWhen.processerService"/>
+            </bean>
+        </property>
     </bean>
+
     <util:list id="processers">
         <ref bean="processerService"/>
     </util:list>
