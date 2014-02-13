@@ -1,6 +1,9 @@
 package pl.piotrsukiennik.whowhen.shared.memcached;
 
 import net.spy.memcached.MemcachedClient;
+import net.spy.memcached.OperationTimeoutException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class MemcachedClientWrapper {
     public static final int MAX_EXPIRATION = 3000;
 
+    private static Log LOG = LogFactory.getLog( MemcachedClientWrapper.class );
     private MemcachedClient memcachedClient;
 
     public MemcachedClientWrapper( MemcachedClient memcachedClient ) {
@@ -17,11 +21,37 @@ public class MemcachedClientWrapper {
     }
 
     public <T> T get( String genericKey, Class<T> outputType ) {
-        return (T) memcachedClient.get( genericKey );
+        try{
+            return (T) memcachedClient.get( genericKey );
+        }
+        catch (  IllegalStateException ex ){
+            if (LOG.isErrorEnabled()){
+                LOG.error( "Error while obtaining object",ex);
+            }
+            return null;
+        } catch ( OperationTimeoutException ex ){
+            if (LOG.isErrorEnabled()){
+                LOG.error( "Error while obtaining object",ex);
+            }
+            return null;
+        }
     }
 
     public <T> T get( MemcachedGenericKey<T> genericKey ) {
-        return (T) memcachedClient.get( genericKey.getKey() );
+        try{
+            return (T) memcachedClient.get( genericKey.getKey() );
+        }
+        catch (  IllegalStateException ex ){
+            if (LOG.isErrorEnabled()){
+                LOG.error( "Error while obtaining object",ex);
+            }
+            return null;
+        } catch ( OperationTimeoutException ex ){
+            if (LOG.isErrorEnabled()){
+                LOG.error( "Error while obtaining object",ex);
+            }
+            return null;
+        }
     }
 
     public <T> MemcachedGenericKey<T> put( String key, T object, int expirationMillis ) {
