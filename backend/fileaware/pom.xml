@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>backend</artifactId>
-        <groupId>pl.pl.piotrsukiennik.whowhen.backend</groupId>
+        <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
         <version>1.0</version>
     </parent>
-    <name>Fileaware parent</name>
+    <name>WhoWhen :: Backend :: Fileaware parent</name>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pl.pl.piotrsukiennik.whowhen.backend.fileaware</groupId>
+    <groupId>pl.piotrsukiennik.whowhen.backend.fileaware</groupId>
     <artifactId>fileaware</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>

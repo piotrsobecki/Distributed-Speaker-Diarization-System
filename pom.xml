@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <name>WhoWhen Parent</name>
+    <name>WhoWhen</name>
     <description>Distributed speaker diarization system</description>
-    <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
+    <groupId>pl.piotrsukiennik.whowhen</groupId>
     <artifactId>whowhen</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <url>http://whowhen.pl.piotrsukiennik-dev.pl</url>
+    <url>http://whowhen.piotrsukiennik.pl</url>
     <developers>
         <developer>
             <name>Piotr Sukiennik</name>

@@ -7,9 +7,9 @@
         <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
         <version>1.0</version>
     </parent>
-    <name>Backend parent</name>
+    <name>WhoWhen :: Backend parent</name>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>pl.pl.piotrsukiennik.whowhen.backend</groupId>
+    <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
     <artifactId>backend</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>

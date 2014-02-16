@@ -5,26 +5,26 @@
     <artifactId>frontend</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
-    <name>Web frontend</name>
+    <name>WhoWhen :: Web frontend</name>
     <parent>
-        <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
+        <groupId>pl.piotrsukiennik.whowhen</groupId>
         <artifactId>whowhen</artifactId>
         <version>1.0</version>
     </parent>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
-            <groupId>pl.pl.piotrsukiennik.whowhen.backend</groupId>
+            <groupId>pl.piotrsukiennik.whowhen.backend</groupId>
             <artifactId>api</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
+            <groupId>pl.piotrsukiennik.whowhen</groupId>
             <version>1.0</version>
             <artifactId>shared</artifactId>
         </dependency>
         <dependency>
-            <groupId>pl.pl.piotrsukiennik.whowhen</groupId>
+            <groupId>pl.piotrsukiennik.whowhen</groupId>
             <version>1.0</version>
             <artifactId>web-shared</artifactId>
         </dependency>
