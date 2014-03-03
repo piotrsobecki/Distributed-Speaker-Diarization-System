@@ -2,9 +2,7 @@ Distributed Speaker Diarization System
 ======================================
 
 [![wercker status](https://app.wercker.com/status/55b83789783fe3490e10a0aead503192/s/ "wercker status")](https://app.wercker.com/project/bykey/55b83789783fe3490e10a0aead503192)
-
 [![Build Status](https://travis-ci.org/piotrsukiennik/Distributed-Speaker-Diarization-System.png?branch=master)](https://travis-ci.org/piotrsukiennik/Distributed-Speaker-Diarization-System)
-
 [![Coverage Status](https://coveralls.io/repos/piotrsukiennik/Distributed-Speaker-Diarization-System/badge.png)](https://coveralls.io/r/piotrsukiennik/Distributed-Speaker-Diarization-System)
 
 
