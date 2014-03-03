@@ -1,6 +1,8 @@
 Distributed Speaker Diarization System
 ======================================
 
+[![Coverage Status](https://coveralls.io/repos/piotrsukiennik/Distributed-Speaker-Diarization-System/badge.png)](https://coveralls.io/r/piotrsukiennik/Distributed-Speaker-Diarization-System)
+
 PJIIT Engineer's Thesis
 ---------------------------------------
 
