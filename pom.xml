@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
     <url>http://whowhen.piotrsukiennik.pl</url>
+
     <developers>
         <developer>
             <name>Piotr Sukiennik</name>
@@ -42,6 +43,7 @@
     </issueManagement>
     <inceptionYear>2013</inceptionYear>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <activemq.version>5.7.0</activemq.version>
         <war.output.dir>target</war.output.dir>
         <spring-version>3.1.0.RELEASE</spring-version>
@@ -67,6 +69,7 @@
         </dependency>
     </dependencies>
     <build>
+
         <pluginManagement>
             <plugins>
                 <plugin>
