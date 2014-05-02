@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Distributed-speaker-diarization-system by piotrsukiennik</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Distributed-speaker-diarization-system</h1>
+            <h2>PJIIT Engineer&#39;s Thesis</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="distributed-speaker-diarization-system" class="anchor" href="#distributed-speaker-diarization-system"><span class="octicon octicon-link"></span></a>Distributed Speaker Diarization System</h1>
+
+<p><a href="https://app.wercker.com/project/bykey/55b83789783fe3490e10a0aead503192"><img src="https://app.wercker.com/status/55b83789783fe3490e10a0aead503192/s/" alt="wercker status" title="wercker status"></a>
+<a href="https://travis-ci.org/piotrsukiennik/Distributed-Speaker-Diarization-System"><img src="https://travis-ci.org/piotrsukiennik/Distributed-Speaker-Diarization-System.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/piotrsukiennik/Distributed-Speaker-Diarization-System"><img src="https://coveralls.io/repos/piotrsukiennik/Distributed-Speaker-Diarization-System/badge.png" alt="Coverage Status"></a></p>
+
+<h2>
+<a name="pjiit-engineers-thesis" class="anchor" href="#pjiit-engineers-thesis"><span class="octicon octicon-link"></span></a>PJIIT Engineer's Thesis</h2>
+
+<p>Working application: <a href="http://whowhen.piotrsukiennik.pl">http://whowhen.piotrsukiennik.pl</a></p>
+
+<p>Continuous Integration: <a href="http://jenkins.piotrsukiennik.pl">http://jenkins.piotrsukiennik.pl</a>
+Sonar: <a href="http://sonar.piotrsukiennik.pl">http://sonar.piotrsukiennik.pl</a>
+Redmine: <a href="http://redmine.piotrsukiennik.pl">http://redmine.piotrsukiennik.pl</a></p>
+
+<p>Speaker diarization is a problem in computer science of segmenting the recorded speech into fragments corresponding to speakers that were present in that recording.</p>
+
+<p>Using the technologies of web applications, the high performance clustering algorithm and distributing the system, made it possible for unlimited number of users to access the functionalities provided and getting high performance results in multiple parallel requests handling.</p>
+
+<p>Project is divided into maven modules that correspond to distributed web applications responsible for different functionalities in the system.</p>
+
+<p>System workflow:</p>
+
+<ul>
+<li>Receiving audio recording from the user in form of an audio file</li>
+<li>Audio file conversion into one that is supported by the system</li>
+<li>Speech features extraction from the speech signal to the spectral data with use of MFCC</li>
+<li>Automatic speaker clustering using the kNN algorithm</li>
+<li>Splitting the audio file into the segments</li>
+<li>Sharing the result audio files for users to access and sending an email notification</li>
+</ul><p>Project has been developed using following technologies:
+  Maven, Java EE, Spring MVC, Memcached, FFMPEG, Comirva, Weka, jQuery, HTML 5 Audio</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/piotrsukiennik">piotrsukiennik</a> can be found on <a href="https://github.com/piotrsukiennik/Distributed-Speaker-Diarization-System">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
